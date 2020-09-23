@@ -11,7 +11,7 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Resoltel" 
+        Title="Resotel" 
         mc:Ignorable="d"
         Height="450" Width="800">
     <Grid>
@@ -29,11 +29,15 @@
         </Grid.RowDefinitions>
 
         <Menu Grid.ColumnSpan="3">
-            <MenuItem Header="Accueil" />
-            <MenuItem Header="Client"/>
+            <MenuItem Header="Accueil" Click="NavToHome" />
+            <MenuItem Header="Client" Click="NavToClient"/>
             <MenuItem Header="Réservation" />
             <MenuItem Header="Restauration"/>
             <MenuItem Header="Nettoyage"/>
         </Menu>
+
+        <DockPanel>
+            <Frame x:Name="_mainFrame" />
+        </DockPanel>
     </Grid>
 </Window>

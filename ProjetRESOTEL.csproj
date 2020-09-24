@@ -106,7 +106,7 @@
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\ClientViewModel.cs" />
-    <Compile Include="ViewModels\ListeClientViewModel.cs" />
+    <Compile Include="ViewModels\ClientsViewModel.cs" />
     <Compile Include="Views\ucCheckFood.xaml.cs">
       <DependentUpon>ucCheckFood.xaml</DependentUpon>
     </Compile>

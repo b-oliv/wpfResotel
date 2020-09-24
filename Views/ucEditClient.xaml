@@ -36,7 +36,7 @@
         <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="5" Grid.Column="2" Text="Phone" FontSize="15"/>
 
         <ListBox Grid.Row="1" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Stretch"
-                 ItemsSource="{Binding ListeClient}" >
+                 ItemsSource="{Binding Clients}" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">

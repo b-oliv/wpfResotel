@@ -59,11 +59,11 @@
         <StackPanel Orientation="Horizontal" Grid.Row="10" Grid.Column="3" HorizontalAlignment="Center">
             <Button Command="{Binding SaveCommand}" >
                 <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="ContentSave" />
+                    <materialDesign:PackIcon Kind="Edit" />
                     <TextBlock Text="Editer" Margin="5 0 0 0" />
                 </StackPanel>
             </Button>
-            <Button Margin="10 0 0 0" Command="{Binding CommandeSupprimer}">
+            <Button Margin="10 0 0 0" Command="{Binding DeleteCommand}">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Delete" />
                     <TextBlock Text="Supprimer" Margin="5 0 0 0" />

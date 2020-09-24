@@ -1,5 +1,6 @@
 ﻿using ProjetRESOTEL.Entities;
 using ProjetRESOTEL.Model;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -61,6 +62,27 @@ namespace ProjetRESOTEL.Service
                 context.SaveChanges();
             }
             return true;
+        }
+
+        public bool DeleteClient(Client client)
+        {
+            try
+            {
+                using (ResotelContext context = new ResotelContext())
+                {
+                    context.Client.Attach(client as Client);
+                    context.Client.Remove(client as Client);
+                    context.SaveChanges();
+                }
+                return true;
+
+            }
+            catch (Exception)
+            {
+                //todo gestion erreurs
+
+            }
+            return false;
         }
     }
 }

@@ -23,6 +23,7 @@ namespace Resotel
     {
         public MainWindow()
         {
+            // Topkek.
             InitializeComponent();
         }
 

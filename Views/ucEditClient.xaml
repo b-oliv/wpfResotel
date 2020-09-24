@@ -34,7 +34,21 @@
         <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="3" Grid.Column="2" Text="E-mail" FontSize="15"/>
         <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="4" Grid.Column="2" Text="Adress" FontSize="15"/>
         <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="5" Grid.Column="2" Text="Phone" FontSize="15"/>
-        
+
+        <ListBox Grid.Row="1" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Stretch"
+                 ItemsSource="{Binding listeClient}" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="BriefcaseAccountOutline" />
+                        <materialDesign:PackIcon Kind="AccountHeartOutline" />
+                        <TextBlock Text="{Binding Firstname}" Margin="5 0 0 0" />
+                        <TextBlock Text="{Binding Lastname}" Margin="5 0 0 0" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
         <TextBox Grid.Row="1" Grid.Column="3" Text="" VerticalContentAlignment="Bottom" FontSize="13" />
         <TextBox Grid.Row="2" Grid.Column="3" Text="" FontSize="13" />
         <TextBox Grid.Row="3" Grid.Column="3" Text="" FontSize="13" />

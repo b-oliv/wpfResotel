@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjetRESOTEL.Entities;
+using ProjetRESOTEL.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,7 @@ namespace ProjetRESOTEL.Views
         public ucNewClient()
         {
             InitializeComponent();
+            this.DataContext = new ClientViewModel(new Client());
         }
     }
 }

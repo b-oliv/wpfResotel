@@ -1,4 +1,5 @@
-﻿using ProjetRESOTEL.Views;
+﻿using ProjetRESOTEL.ViewModels;
+using ProjetRESOTEL.Views;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -54,6 +55,7 @@ namespace ProjetRESOTEL
         private void NavigateToEditClientWindow()
         {
             Display(new ucEditClient());
+            this.DataContext = new ClientsViewModel().ContactSelected;
         }
 
         private void NavigateToNewReservationWindow()

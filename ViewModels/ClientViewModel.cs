@@ -20,6 +20,9 @@ namespace ProjetRESOTEL.ViewModels
             get { return client; }
         }
 
+        public ClientViewModel()
+        {}
+
         //Initialisation de la vue modèle avec l'entité modèle
         public ClientViewModel(Client client)
         {
@@ -65,17 +68,18 @@ namespace ProjetRESOTEL.ViewModels
         {
             get
             {
-                return new RelayCommand(Save, CanEnregistrer);
+                return new RelayCommand(Save, CanSave);
             }
         }
 
         private void Save()
         {
-            MessageBox.Show("Contact enregistré");
             ClientService.Instance.SaveClient(client);
+            MessageBox.Show("Client ajouté !");
+            
         }
 
-        private bool CanEnregistrer()
+        private bool CanSave()
         {
             if (string.IsNullOrWhiteSpace(client.Firstname))
             {

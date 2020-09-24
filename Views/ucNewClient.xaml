@@ -35,11 +35,11 @@
         <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="4" Grid.Column="1" Text="E-mail" FontSize="15"/>
         <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="5" Grid.Column="1" Text="Adress" FontSize="15" />
 
-        <TextBox Grid.Row="1" Grid.Column="2" Text="" VerticalContentAlignment="Bottom" FontSize="13" />
-        <TextBox Grid.Row="2" Grid.Column="2" Text="" FontSize="13"/>
-        <TextBox Grid.Row="3" Grid.Column="2" Text="" FontSize="13"/>
-        <TextBox Grid.Row="4" Grid.Column="2" Text="" FontSize="13"/>
-        <TextBox Grid.Row="5" Grid.Column="2" Text="" FontSize="13"/>
+        <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Client.Firstname}" VerticalContentAlignment="Bottom" FontSize="13" />
+        <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Client.Lastname}" FontSize="13"/>
+        <TextBox Grid.Row="3" Grid.Column="2" Text="{Binding Client.Phone}" FontSize="13"/>
+        <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding Client.Mail}" FontSize="13"/>
+        <TextBox Grid.Row="5" Grid.Column="2" Text="{Binding Client.Adress}" FontSize="13"/>
 
         <StackPanel Orientation="Horizontal" Grid.Row="10" Grid.Column="2" HorizontalAlignment="Center">
             <Button Command="{Binding SaveCommand}">

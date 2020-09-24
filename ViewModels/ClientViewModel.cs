@@ -58,6 +58,47 @@ namespace ProjetRESOTEL.ViewModels
             }
         }
 
+        public string Mail
+        {
+            get { return client.Mail; }
+            set
+            {
+                //empeche l'écrasement du nom
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    client.Mail = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public string Adress
+        {
+            get { return client.Adress; }
+            set
+            {
+                //empeche l'écrasement du nom
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    client.Adress = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public int Phone
+        {
+            get { return client.Phone; }
+            set
+            {
+                //empeche l'écrasement du nom
+
+                    client.Phone = value;
+                    NotifyPropertyChanged();
+                
+            }
+        }
+
         #region Save client
 
         //Commande enregistrer

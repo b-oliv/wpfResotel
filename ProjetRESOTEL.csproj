@@ -100,6 +100,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Entities\Client.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\ResotelContext.cs" />
     <Compile Include="Service\ClientService.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />

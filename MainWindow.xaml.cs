@@ -13,8 +13,13 @@ namespace ProjetRESOTEL
         public MainWindow()
         {
             InitializeComponent();
+            MainTab.Items.Add(new TabItem { Content = new ucHome() });
         }
-
+        private void OnHomeButtonClick(object sender, RoutedEventArgs e)
+        {
+            NavigateToHomeWindow();
+        }
+        
         private void OnNewClientButtonClick(object sender, RoutedEventArgs e)
         {
             NavigateToNewClientWindow();
@@ -45,6 +50,11 @@ namespace ProjetRESOTEL
             MainTab.Items.Clear();
             MainTab.Items.Add(new TabItem { Content = userControl });
             MainTab.Items.Refresh();
+        }
+
+        private void NavigateToHomeWindow()
+        {
+            Display(new ucHome());
         }
 
         private void NavigateToNewClientWindow()

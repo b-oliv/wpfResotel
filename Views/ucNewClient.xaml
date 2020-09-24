@@ -42,7 +42,7 @@
         <TextBox Grid.Row="5" Grid.Column="2" Text="" FontSize="13"/>
 
         <StackPanel Orientation="Horizontal" Grid.Row="10" Grid.Column="2" HorizontalAlignment="Center">
-            <Button>
+            <Button Command="{Binding SaveCommand}">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="ContentSave" />
                     <TextBlock Text="Créer un client" Margin="5 0 0 0" />

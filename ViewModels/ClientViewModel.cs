@@ -1,9 +1,12 @@
 ﻿using ProjetRESOTEL.Entities;
+using ProjetRESOTEL.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace ProjetRESOTEL.ViewModels
 {
@@ -54,6 +57,38 @@ namespace ProjetRESOTEL.ViewModels
                 }
             }
         }
+
+        #region Save client
+
+        //Commande enregistrer
+        public ICommand SaveCommand
+        {
+            get
+            {
+                return new RelayCommand(Save, CanEnregistrer);
+            }
+        }
+
+        private void Save()
+        {
+            MessageBox.Show("Contact enregistré");
+            ClientService.Instance.SaveClient(client);
+        }
+
+        private bool CanEnregistrer()
+        {
+            if (string.IsNullOrWhiteSpace(client.Firstname))
+            {
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(client.Lastname))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        #endregion
 
 
     }

@@ -103,6 +103,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\ResotelContext.cs" />
     <Compile Include="Service\ClientService.cs" />
+    <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\ClientViewModel.cs" />
     <Compile Include="ViewModels\ListeClientViewModel.cs" />

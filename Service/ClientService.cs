@@ -1,6 +1,7 @@
 ﻿using ProjetRESOTEL.Entities;
 using ProjetRESOTEL.Model;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace ProjetRESOTEL.Service
@@ -38,6 +39,28 @@ namespace ProjetRESOTEL.Service
             }
 
             return clients;
+        }
+
+        public bool SaveClient(Client client)
+        {
+            using (ResotelContext context = new ResotelContext())
+            {
+                if (client.IdClient > 0)
+                {
+                    //le client existe, on l'attache au contexte pour le mettre à jour
+                    context.Client.Attach(client);
+                    //et on met son statut à modifié
+                    context.Entry(client).State = EntityState.Modified;
+                }
+                else
+                {
+                    //le client est nouveau, on l'ajoute à la liste
+                    context.Client.Add(client);
+                }
+                //répercute les changements en base
+                context.SaveChanges();
+            }
+            return true;
         }
     }
 }

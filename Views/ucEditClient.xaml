@@ -9,10 +9,9 @@
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              TextElement.FontSize="20"
              xmlns:local="clr-namespace:ProjetRESOTEL.Views"
+             xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
-             DataContext="{Binding ContactSelected}"
->
+             d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
@@ -51,11 +50,11 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <TextBox Grid.Row="1" Grid.Column="3" Text="" VerticalContentAlignment="Bottom" FontSize="13" />
-        <TextBox Grid.Row="2" Grid.Column="3" Text="" FontSize="13" />
-        <TextBox Grid.Row="3" Grid.Column="3" Text="" FontSize="13" />
-        <TextBox Grid.Row="4" Grid.Column="3" Text="" FontSize="13" />
-        <TextBox Grid.Row="5" Grid.Column="3" Text="" FontSize="13" />
+        <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding ClientSelected.Firstname}" VerticalContentAlignment="Bottom" FontSize="13" />
+        <TextBox Grid.Row="2" Grid.Column="3" Text="{Binding ClientSelected.Lastname}" FontSize="13" />
+        <TextBox Grid.Row="3" Grid.Column="3" Text="{Binding ClientSelected.Phone}" FontSize="13" />
+        <TextBox Grid.Row="4" Grid.Column="3" Text="{Binding ClientSelected.Adress}" FontSize="13" />
+        <TextBox Grid.Row="5" Grid.Column="3" Text="{Binding ClientSelected.Mail}" FontSize="13" />
 
         <StackPanel Orientation="Horizontal" Grid.Row="10" Grid.Column="3" HorizontalAlignment="Center">
             <Button Command="{Binding SaveCommand}" >
@@ -71,9 +70,5 @@
                 </StackPanel>
             </Button>
         </StackPanel>
-
-
-
-
     </Grid>
 </UserControl>

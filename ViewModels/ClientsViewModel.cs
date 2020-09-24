@@ -11,7 +11,6 @@ namespace ProjetRESOTEL.ViewModels
     class ClientsViewModel : ViewModelBase
     {
         public ObservableCollection<ClientViewModel> Clients { get => _clients; }
-        public ClientViewModel ContactSelected { get => _observer.CurrentItem as ClientViewModel; }
 
         private readonly ObservableCollection<ClientViewModel> _clients;
         private readonly ICollectionView _observer;
@@ -35,6 +34,14 @@ namespace ProjetRESOTEL.ViewModels
         private void OnSelectedClientChanged(object sender, EventArgs e)
         {
             NotifyPropertyChanged("ClientSelected");
+        }
+
+        public ClientViewModel ClientSelected
+        {
+            get
+            {
+                return _observer.CurrentItem as ClientViewModel;
+            }
         }
     }
 }

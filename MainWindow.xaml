@@ -28,6 +28,14 @@
         </Grid.RowDefinitions>
 
         <Menu Grid.ColumnSpan="3">
+            <MenuItem Click="OnHomeButtonClick">
+                <MenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Home" />
+                        <TextBlock Text="Accueil" Margin="5 0 0 0"/>
+                    </StackPanel>
+                </MenuItem.Header>
+            </MenuItem>
             <MenuItem>
                 <MenuItem.Header>
                     <StackPanel Orientation="Horizontal">

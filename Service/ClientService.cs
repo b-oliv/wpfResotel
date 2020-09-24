@@ -1,10 +1,7 @@
 ﻿using ProjetRESOTEL.Entities;
 using ProjetRESOTEL.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjetRESOTEL.Service
 {
@@ -12,39 +9,35 @@ namespace ProjetRESOTEL.Service
     {
         #region Singleton 
 
-        private static ClientService instance;
+        private static ClientService _instance;
+
         public static ClientService Instance
         {
             get
             {
-                if (instance == null)
+                if (_instance == null)
                 {
-                    instance = new ClientService();
+                    _instance = new ClientService();
                 }
-                return instance;
+
+                return _instance;
             }
         }
 
-        private ClientService()
-        {
-
-        }
+        private ClientService() { }
 
         #endregion
 
-        public List<Client> LoadClient()
+        public List<Client> LoadClients()
         {
-            List<Client> lst = new List<Client>();
+            List<Client> clients = new List<Client>();
 
             using (ResotelContext context = new ResotelContext())
             {
-                var lstClient = context.Client.ToList();
-                lst.AddRange(lstClient);
-
+                clients.AddRange(context.Client.ToList());
             }
 
-            return lst;
-
+            return clients;
         }
     }
 }

@@ -29,7 +29,7 @@ namespace ProjetRESOTEL.ViewModels
         public ListeClientViewModel()
         {
             //charge le modèle
-            List<Client> lst = ClientService.Instance.LoadClient();
+            List<Client> lst = ClientService.Instance.LoadClients();
 
             //créé la liste des viewsmodeles pour chaque entité
             listeClient = new ObservableCollection<ClientViewModel>();

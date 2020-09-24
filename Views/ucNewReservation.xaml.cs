@@ -13,16 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Resotel.Views
+namespace ProjetRESOTEL.Views
 {
     /// <summary>
-    /// Logique d'interaction pour Home.xaml
+    /// Logique d'interaction pour ucNewReservation.xaml
     /// </summary>
-    public partial class Home : Page
+    public partial class ucNewReservation : UserControl
     {
-        public Home()
+        public ucNewReservation()
         {
             InitializeComponent();
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

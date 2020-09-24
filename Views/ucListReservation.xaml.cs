@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Resotel.Views
+namespace ProjetRESOTEL.Views
 {
     /// <summary>
-    /// Logique d'interaction pour Client.xaml
+    /// Logique d'interaction pour ucListReservation.xaml
     /// </summary>
-    public partial class Client : Page
+    public partial class ucListReservation : UserControl
     {
-        public Client()
+        public ucListReservation()
         {
             InitializeComponent();
         }

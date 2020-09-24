@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Resotel.Properties
+namespace ProjetRESOTEL.Properties
 {
 
 

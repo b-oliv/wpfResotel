@@ -1,0 +1,100 @@
+﻿<Window x:Class="ProjetRESOTEL.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+         xmlns:Views="clr-namespace:ProjetRESOTEL.Views"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Réservations RESOTEL" 
+        Height="600" Width="1000" MinHeight="500" MinWidth="800" 
+        WindowState="Normal">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.ColumnSpan="3">
+            <MenuItem>
+                <MenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Person" />
+                        <TextBlock Text="Client" Margin="5 0 0 0"/>
+                    </StackPanel>
+                </MenuItem.Header>
+                <MenuItem x:Name="NewClientButton" Click="OnNewClientButtonClick">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="PersonAdd" />
+                            <TextBlock Text="Ajouter un Client" Margin="5 0 0 0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem x:Name="btnEditClient" Click="btnEditClient_Click">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Edit" />
+                            <TextBlock Text="Editer un Client" Margin="5 0 0 0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem>
+                <MenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="LocalActivity" />
+                        <TextBlock Text="Réservations" Margin="5 0 0 0"/>
+                    </StackPanel>
+                </MenuItem.Header>
+                <MenuItem x:Name="btnNewReservation" Click="btnNewReservation_Click">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="AddBox" />
+                            <TextBlock Text="Nouvelle réservation" Margin="5 0 0 0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem x:Name="btnListReservation" Click="btnListReservation_Click">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ViewList" />
+                            <TextBlock Text="Liste réservations" Margin="5 0 0 0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem>
+                <MenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Food" />
+                        <TextBlock Text="Restauration" Margin="5 0 0 0"/>
+                    </StackPanel>
+                </MenuItem.Header>
+            </MenuItem>
+            <MenuItem>
+                <MenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="EventNote" />
+                        <TextBlock Text="Ménage" Margin="5 0 0 0"/>
+                    </StackPanel>
+                </MenuItem.Header>
+            
+            </MenuItem>
+        </Menu>
+
+        <TabControl x:Name="MainTab" Grid.Row="1" Grid.RowSpan="3" Grid.Column="3" Background="Transparent" BorderBrush="Transparent"></TabControl>  
+    </Grid>
+</Window>

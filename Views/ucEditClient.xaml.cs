@@ -23,7 +23,7 @@ namespace ProjetRESOTEL.Views
         public ucEditClient()
         {
             InitializeComponent();
-            this.DataContext = new ViewModels.ListeClientViewModel();
+            this.DataContext = new ViewModels.ClientsViewModel();
         }
     }
 }

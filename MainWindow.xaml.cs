@@ -55,7 +55,7 @@ namespace ProjetRESOTEL
         private void NavigateToEditClientWindow()
         {
             Display(new ucEditClient());
-            this.DataContext = new ClientsViewModel().ContactSelected;
+            this.DataContext = new ClientsViewModel().ClientSelected;
         }
 
         private void NavigateToNewReservationWindow()

@@ -78,6 +78,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Views\ucCheckFood.xaml.cs">
+      <DependentUpon>ucCheckFood.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ucEditClient.xaml.cs">
       <DependentUpon>ucEditClient.xaml</DependentUpon>
     </Compile>
@@ -102,6 +105,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ucCheckFood.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\ucEditClient.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

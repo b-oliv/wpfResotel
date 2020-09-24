@@ -76,7 +76,7 @@
                     </MenuItem.Header>
                 </MenuItem>
             </MenuItem>
-            <MenuItem>
+            <MenuItem x:Name="CheckFoodButton" Click="OnCheckFoodButtonClick">
                 <MenuItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Food" />

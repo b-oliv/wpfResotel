@@ -34,6 +34,11 @@ namespace ProjetRESOTEL
             NavigateToReservationListWindow();
         }
 
+        private void OnCheckFoodButtonClick(object sender, RoutedEventArgs e)
+        {
+            NavigateToCheckFoodWindow();
+        }
+
         private void Display(UserControl userControl)
         {
             MainTab.Items.Clear();
@@ -59,6 +64,11 @@ namespace ProjetRESOTEL
         private void NavigateToReservationListWindow()
         {
             Display(new ucListReservation());
+        }
+
+        private void NavigateToCheckFoodWindow()
+        {
+            Display(new ucCheckFood());
         }
     }
 }

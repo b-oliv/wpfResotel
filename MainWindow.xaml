@@ -43,7 +43,7 @@
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
-                <MenuItem x:Name="btnEditClient" Click="btnEditClient_Click">
+                <MenuItem x:Name="EditClientButton" Click="OnEditClientButtonClick">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Edit" />
@@ -59,7 +59,7 @@
                         <TextBlock Text="Réservations" Margin="5 0 0 0"/>
                     </StackPanel>
                 </MenuItem.Header>
-                <MenuItem x:Name="btnNewReservation" Click="btnNewReservation_Click">
+                <MenuItem x:Name="NewReservationButton" Click="OnNewReservationButtonClick">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="AddBox" />
@@ -67,7 +67,7 @@
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
-                <MenuItem x:Name="btnListReservation" Click="btnListReservation_Click">
+                <MenuItem x:Name="ReservationListButton" Click="OnReservationListButtonClick">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="ViewList" />

@@ -16,18 +16,14 @@
         WindowState="Normal">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Menu Grid.ColumnSpan="3">
+        <Menu Grid.ColumnSpan="3" Background="#333535" Foreground="white">
             <MenuItem Click="OnHomeButtonClick">
                 <MenuItem.Header>
                     <StackPanel Orientation="Horizontal">
@@ -99,10 +95,9 @@
                         <TextBlock Text="Ménage" Margin="5 0 0 0"/>
                     </StackPanel>
                 </MenuItem.Header>
-            
             </MenuItem>
         </Menu>
 
-        <TabControl x:Name="MainTab" Grid.Row="1" Grid.RowSpan="3" Grid.Column="3" Background="Transparent" BorderBrush="Transparent"></TabControl>  
+        <TabControl x:Name="MainTab" Grid.Row="1" Grid.RowSpan="3" Grid.Column="3" Background="Transparent"  BorderBrush="Transparent"></TabControl>  
     </Grid>
 </Window>

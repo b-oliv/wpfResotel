@@ -64,25 +64,21 @@ namespace ProjetRESOTEL.Service
             return true;
         }
 
-        public bool DeleteClient(Client client)
+        internal bool DeleteClient(Client client)
         {
-            try
+            using (ResotelContext context = new ResotelContext())
             {
-                using (ResotelContext context = new ResotelContext())
+                if (client.IdClient > 0)
                 {
-                    context.Client.Attach(client as Client);
-                    context.Client.Remove(client as Client);
-                    context.SaveChanges();
+                    //le client existe, on l'attache au contexte pour le mettre à jour
+                    context.Client.Attach(client);
+                    //et on met son statut à modifié
+                    context.Entry(client).State = EntityState.Deleted;
                 }
-                return true;
-
+                //répercute les changements en base
+                context.SaveChanges();
             }
-            catch (Exception)
-            {
-                //todo gestion erreurs
-
-            }
-            return false;
+            return true;
         }
     }
 }

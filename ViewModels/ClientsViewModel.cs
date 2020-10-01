@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 
@@ -24,12 +25,20 @@ namespace ProjetRESOTEL.ViewModels
 
             foreach (Client person in clients)
             {
-                _clients.Add(new ClientViewModel(person));
+                ClientViewModel vm = new ClientViewModel(person);
+                vm.EventSupprimer += Vm_EventSupprimer;
+                _clients.Add(vm);
             }
 
             _observer = CollectionViewSource.GetDefaultView(_clients);
             _observer.CurrentChanged += OnSelectedClientChanged;
             _observer.MoveCurrentToLast();
+        }
+
+        private void Vm_EventSupprimer(object sender, EventArgs e)
+        {
+            _clients.Remove(sender as ClientViewModel);
+            NotifyPropertyChanged("Clients");
         }
 
         private void OnSelectedClientChanged(object sender, EventArgs e)
@@ -44,6 +53,24 @@ namespace ProjetRESOTEL.ViewModels
                 return _observer.CurrentItem as ClientViewModel;
             }
         }
+
+        #region Edit
+        //Commande enregistrer
+        public ICommand SaveCommand
+        {
+            get
+            {
+                return new RelayCommand(Edit);
+            }
+        }
+
+        private void Edit()
+        {
+            ClientService.Instance.SaveClient(ClientSelected.Client);
+            MessageBox.Show("Client modifié !");
+        }
+
+        #endregion
 
         #region Supprimer
 
@@ -65,6 +92,7 @@ namespace ProjetRESOTEL.ViewModels
             if (ClientService.Instance.DeleteClient(ClientSelected.Client))
             {
                 EventSupprimer?.Invoke(this, EventArgs.Empty);
+                MessageBox.Show("Client supprimé !");
             }
         }
 

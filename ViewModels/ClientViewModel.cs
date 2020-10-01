@@ -113,6 +113,8 @@ namespace ProjetRESOTEL.ViewModels
             }
         }
 
+        public Action<object, EventArgs> EventSupprimer { get; internal set; }
+
         private void Save()
         {
             ClientService.Instance.SaveClient(client);

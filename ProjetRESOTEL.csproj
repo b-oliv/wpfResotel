@@ -99,11 +99,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Entities\Reservation.cs" />
     <Compile Include="Entities\Client.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\ResotelContext.cs" />
     <Compile Include="Service\ClientService.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="ViewModels\ReservationsModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\ClientViewModel.cs" />
     <Compile Include="ViewModels\ClientsViewModel.cs" />

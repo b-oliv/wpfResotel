@@ -5,27 +5,36 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProjetRESOTEL.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="900" d:DesignWidth="1200">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
-            <ColumnDefinition Width="46*"/>
-            <ColumnDefinition Width="75*"/>
-            <ColumnDefinition Width="353*"/>
-            <ColumnDefinition Width="39*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="130*"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="600*"/>
+            <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="1" Grid.Column="2" Text="Plannig" FontSize="15" />
-        <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="2" Grid.Column="2" Text="other" FontSize="15" />
-        <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="3" Grid.Column="2" Text="..." FontSize="15"/>
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,0,50,0">
+            <TextBlock Style="{DynamicResource StyleLabel}"  Text="Chambres libres" FontSize="15" />
+            <Button Content="Simple" Margin="10"></Button>
+            <Button Content="Double" Margin="10"></Button>
+            <Button Content="Avec Bébé" Margin="10"></Button>
+            <Button Content="3 Personnes" Margin="10"></Button>
+            <Button Content="4 Personnes" Margin="10"></Button>
+            <Button Content="6 Personnes" Margin="10"></Button>
+            <Button Content="Double avec Bébé" Margin="10"></Button>
+            <CheckBox Content="Option vue cours intérieure" Margin="10"></CheckBox>
+        </StackPanel>
+
+        <GridSplitter  Grid.Row="1" Grid.Column="2" Width="5" HorizontalAlignment="Stretch" Background="Gray"></GridSplitter>
+
+        <Calendar Grid.Row="1" Grid.Column="3" />
+
     </Grid>
 </UserControl>

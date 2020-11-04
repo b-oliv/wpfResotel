@@ -1,4 +1,5 @@
 ﻿using ProjetRESOTEL.Entities;
+using ProjetRESOTEL.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,6 +71,11 @@ namespace ProjetRESOTEL.ViewModels
                 _reservation.EndDate = value;
                 NotifyPropertyChanged();
             }
+        }
+
+        public string TypeBedroom
+        {
+            get { return ReservationService.Instance.TypeOfRoom(_reservation.IdBedroom); }
         }
 
     }

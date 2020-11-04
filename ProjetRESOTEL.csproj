@@ -99,8 +99,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Entities\Bedroom.cs" />
     <Compile Include="Entities\Reservation.cs" />
     <Compile Include="Entities\Client.cs" />
+    <Compile Include="Entities\Typebedroom.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\ResotelContext.cs" />
     <Compile Include="Service\ClientService.cs" />

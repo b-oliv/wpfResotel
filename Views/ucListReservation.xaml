@@ -21,10 +21,11 @@
 
         <DataGrid Grid.Row="2" ItemsSource="{Binding Reservations}" AutoGenerateColumns="False" CanUserResizeColumns="True" Margin="0,0,0,-394">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="IdReservation" Binding="{Binding IdReservation}" />
+                <DataGridTextColumn Header="Id" Binding="{Binding IdReservation}" />
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
-                <DataGridTextColumn Header="StartDate" Binding="{Binding StartDate}" />
-                <DataGridTextColumn Header="EndDate" Binding="{Binding EndDate}" />
+                <DataGridTextColumn Header="Start" Binding="{Binding StartDate}" />
+                <DataGridTextColumn Header="End" Binding="{Binding EndDate}" />
+                <DataGridTextColumn Header="Type de chambre" Binding="{Binding TypeBedroom, Mode=OneTime}" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

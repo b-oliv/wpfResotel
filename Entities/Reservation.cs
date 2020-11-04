@@ -37,6 +37,7 @@ namespace ProjetRESOTEL.Entities
         public int IdBedroom { get; set; }
         public int IdClient { get; set; }
 
+
         public override string ToString()
         {
             return $"Reservation: {IdReservation} - {Name}";

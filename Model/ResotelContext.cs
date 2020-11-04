@@ -19,5 +19,9 @@ namespace ProjetRESOTEL.Model
         public DbSet<Client> Client { get; set; }
 
         public DbSet<Reservation> Reservation { get; set; }
+
+        public DbSet<Bedroom> Bedroom { get; set; }
+
+        public DbSet<Typebedroom> Typebedroom { get; set; }
     }
 }

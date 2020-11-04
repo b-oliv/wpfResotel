@@ -17,5 +17,7 @@ namespace ProjetRESOTEL.Model
         }
         //les entités ...
         public DbSet<Client> Client { get; set; }
+
+        public DbSet<Reservation> Reservation { get; set; }
     }
 }

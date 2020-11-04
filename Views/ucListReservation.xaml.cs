@@ -23,7 +23,7 @@ namespace ProjetRESOTEL.Views
         public ucListReservation()
         {
             InitializeComponent();
-            DataContext = new ViewModels.ClientsViewModel();
+            DataContext = new ViewModels.ReservationsViewModel();
         }
     }
 }

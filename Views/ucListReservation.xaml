@@ -7,6 +7,25 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="1" Text="Liste des réservations" />
+
+
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Reservations}" AutoGenerateColumns="False" CanUserResizeColumns="True" Margin="0,0,0,-394">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="IdReservation" Binding="{Binding IdReservation}" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="StartDate" Binding="{Binding StartDate}" />
+                <DataGridTextColumn Header="EndDate" Binding="{Binding EndDate}" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

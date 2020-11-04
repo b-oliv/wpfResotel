@@ -24,5 +24,7 @@ namespace ProjetRESOTEL.Views
         {
             InitializeComponent();
         }
+
+
     }
 }

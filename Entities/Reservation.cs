@@ -39,7 +39,7 @@ namespace ProjetRESOTEL.Entities
 
         public override string ToString()
         {
-            return $"Client {Name}:  {StartDate} - {EndDate}";
+            return $"Reservation: {IdReservation} - {Name}";
         }
     }
 }

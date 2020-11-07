@@ -105,14 +105,20 @@
     <Compile Include="Entities\Typebedroom.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\ResotelContext.cs" />
+    <Compile Include="Service\BedroomService.cs" />
     <Compile Include="Service\ClientService.cs" />
     <Compile Include="Service\ReservationService.cs" />
+    <Compile Include="ViewModels\BedroomViewModel.cs" />
+    <Compile Include="ViewModels\BedroomsViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\ReservationViewModel.cs" />
     <Compile Include="ViewModels\ReservationsViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\ClientViewModel.cs" />
     <Compile Include="ViewModels\ClientsViewModel.cs" />
+    <Compile Include="Views\ucCleanChamber.xaml.cs">
+      <DependentUpon>ucCleanChamber.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ucCheckFood.xaml.cs">
       <DependentUpon>ucCheckFood.xaml</DependentUpon>
     </Compile>
@@ -143,6 +149,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ucCleanChamber.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ucCheckFood.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

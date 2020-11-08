@@ -69,10 +69,10 @@
             <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="5" Grid.Column="1" Text="Type de Chambre" FontSize="13" Margin="0,0,0,11"/>
 
 
-            <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding ClientSelected.Firstname}" VerticalContentAlignment="Bottom" FontSize="13" />
-            <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding ClientSelected.Lastname}" VerticalContentAlignment="Bottom" FontSize="13" Grid.RowSpan="2" />
-            <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding ClientSelected.Phone}" VerticalContentAlignment="Bottom" FontSize="13" />
-            <TextBox Grid.Row="5" Grid.Column="2" Text="{Binding ClientSelected.Adress}" VerticalContentAlignment="Bottom" FontSize="13" />
+            <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding ReservationSelected.RoomNumber, Mode=OneTime}" VerticalContentAlignment="Bottom" FontSize="13" />
+            <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding ReservationSelected.Firstname, Mode=OneTime}" VerticalContentAlignment="Bottom" FontSize="13" Grid.RowSpan="2" />
+            <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding ReservationSelected.Lastname, Mode=OneTime}" VerticalContentAlignment="Bottom" FontSize="13" />
+            <TextBox Grid.Row="5" Grid.Column="2" Text="{Binding ReservationSelected.TypeBedroom, Mode=OneTime}" VerticalContentAlignment="Bottom" FontSize="13" />
 
 
             <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Center" Grid.ColumnSpan="3" Margin="17,0,16,0">

@@ -16,6 +16,7 @@ namespace ProjetRESOTEL.ViewModels
         //Accesseur sur le modèle (Property en lecture seule)
         public Reservation Reservation
         {
+
             get { return _reservation; }
         }
 

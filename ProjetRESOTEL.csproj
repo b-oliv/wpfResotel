@@ -110,6 +110,7 @@
     <Compile Include="Service\ReservationService.cs" />
     <Compile Include="ViewModels\BedroomViewModel.cs" />
     <Compile Include="ViewModels\BedroomsViewModel.cs" />
+    <Compile Include="ViewModels\IObserver.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\ReservationViewModel.cs" />
     <Compile Include="ViewModels\ReservationsViewModel.cs" />

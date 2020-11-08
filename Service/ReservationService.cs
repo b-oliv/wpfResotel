@@ -2,6 +2,7 @@
 using ProjetRESOTEL.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,28 @@ namespace ProjetRESOTEL.Service
         }
 
         private ReservationService() { }
+
+        public bool SaveReservation(Reservation reservation)
+        {
+            using (ResotelContext context = new ResotelContext())
+            {
+                if (reservation.IdReservation > 0)
+                {
+                    //le client existe, on l'attache au contexte pour le mettre à jour
+                    context.Reservation.Attach(reservation);
+                    //et on met son statut à modifié
+                    context.Entry(reservation).State = EntityState.Modified;
+                }
+                else
+                {
+                    //le client est nouveau, on l'ajoute à la liste
+                    context.Reservation.Add(reservation);
+                }
+                //répercute les changements en base
+                context.SaveChanges();
+            }
+            return true;
+        }
 
         #endregion
 
@@ -78,7 +101,6 @@ namespace ProjetRESOTEL.Service
 
             return roomnumber;
         }
-
 
         public string Firstname(int idReservation)
         {

@@ -78,9 +78,19 @@ namespace ProjetRESOTEL.ViewModels
             get { return ReservationService.Instance.TypeOfRoom(_reservation.IdBedroom); }
         }
 
+        public string RoomNumber
+        {
+            get { return ReservationService.Instance.RoomNumber(_reservation.IdBedroom); }
+        }
+
         public string Firstname
         {
             get { return ReservationService.Instance.Firstname(_reservation.IdReservation); }
+        }
+
+        public string Lastname
+        {
+            get { return ReservationService.Instance.Lastname(_reservation.IdReservation); }
         }
 
     }

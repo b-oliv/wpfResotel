@@ -16,17 +16,15 @@
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="1" Text="Liste des réservations" />
-
-
         <DataGrid Grid.Row="2" ItemsSource="{Binding Reservations}" AutoGenerateColumns="False" CanUserResizeColumns="True" Margin="0,0,0,-394">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding IdReservation}" />
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
-                <DataGridTextColumn Header="Start" Binding="{Binding StartDate}" />
-                <DataGridTextColumn Header="End" Binding="{Binding EndDate}" />
-                <DataGridTextColumn Header="Type de chambre" Binding="{Binding TypeBedroom, Mode=OneTime}" />
+                <DataGridTextColumn Header="Numéro chambre" Binding="{Binding RoomNumber}" />
                 <DataGridTextColumn Header="Prénom" Binding="{Binding Firstname}" />
+                <DataGridTextColumn Header="Nom" Binding="{Binding Lastname}" />
+                <DataGridTextColumn Header="Date d'arrivée" Binding="{Binding StartDate}" />
+                <DataGridTextColumn Header="Date de départ" Binding="{Binding EndDate}" />
+                <DataGridTextColumn Header="Type de chambre" Binding="{Binding TypeBedroom, Mode=OneTime}" />
+                
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

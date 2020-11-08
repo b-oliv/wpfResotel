@@ -60,6 +60,25 @@ namespace ProjetRESOTEL.Service
             return typeOfRoom;
         }
 
+        public string RoomNumber(int idReservation)
+        {
+
+            String roomnumber = "NA";
+
+            using (ResotelContext context = new ResotelContext())
+            {
+
+                var query = (from reservation in context.Reservation
+                             join type in context.Bedroom on reservation.IdBedroom equals type.IdBedroom
+                             where reservation.IdReservation == idReservation
+                             select type).First();
+
+                roomnumber = query.RoomNumber.ToString();
+            }
+
+            return roomnumber;
+        }
+
 
         public string Firstname(int idReservation)
         {
@@ -78,6 +97,25 @@ namespace ProjetRESOTEL.Service
             }
 
             return firstname;
+        }
+
+        public string Lastname(int idReservation)
+        {
+
+            String lastname = "NA";
+
+            using (ResotelContext context = new ResotelContext())
+            {
+
+                var query = (from reservation in context.Reservation
+                             join type in context.Client on reservation.IdClient equals type.IdClient
+                             where reservation.IdReservation == idReservation
+                             select type).First();
+
+                lastname = query.Lastname;
+            }
+
+            return lastname;
         }
 
     }

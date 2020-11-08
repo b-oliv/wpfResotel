@@ -18,6 +18,6 @@ namespace ProjetRESOTEL.Entities
         public int IsDirty { get; set; }
         public int IdTypeBedroom { get; set; }
         public int IdOptionRooms { get; set; }
-
+        public object IdClient { get; internal set; }
     }
 }

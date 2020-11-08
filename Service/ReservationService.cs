@@ -60,6 +60,25 @@ namespace ProjetRESOTEL.Service
             return typeOfRoom;
         }
 
- 
+
+        public string Firstname(int idReservation)
+        {
+
+            String firstname = "NA";
+
+            using (ResotelContext context = new ResotelContext())
+            {
+
+                var query = (from reservation in context.Reservation
+                             join type in context.Client on reservation.IdClient equals type.IdClient
+                             where reservation.IdReservation == idReservation
+                             select type).First();
+
+                firstname = query.Firstname;
+            }
+
+            return firstname;
+        }
+
     }
 }

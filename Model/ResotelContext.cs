@@ -23,5 +23,6 @@ namespace ProjetRESOTEL.Model
         public DbSet<Bedroom> Bedroom { get; set; }
 
         public DbSet<Typebedroom> Typebedroom { get; set; }
+
     }
 }

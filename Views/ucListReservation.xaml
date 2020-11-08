@@ -26,6 +26,7 @@
                 <DataGridTextColumn Header="Start" Binding="{Binding StartDate}" />
                 <DataGridTextColumn Header="End" Binding="{Binding EndDate}" />
                 <DataGridTextColumn Header="Type de chambre" Binding="{Binding TypeBedroom, Mode=OneTime}" />
+                <DataGridTextColumn Header="Prénom" Binding="{Binding Firstname}" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

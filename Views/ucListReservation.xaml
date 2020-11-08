@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ProjetRESOTEL.Views"
+             xmlns:local="clr-namespace:ProjetRESOTEL.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -11,12 +11,25 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="10"/>
+            <RowDefinition Height="53*"/>
+            <RowDefinition Height="200"/>
         </Grid.RowDefinitions>
 
-        <DataGrid Grid.Row="2" ItemsSource="{Binding Reservations}" AutoGenerateColumns="False" CanUserResizeColumns="True" Margin="0,0,0,-394">
+        <Menu Background="#333535" Foreground="white" Margin="0,0,0,9" Grid.RowSpan="3">
+            <MenuItem Background="#333535" Foreground="white">
+                <MenuItem.Header>
+                    <StackPanel Orientation="Vertical">
+                        <materialDesign:PackIcon Kind="Hotel" />
+                        <TextBlock Text="Gestionnaire de réservation" Margin="5 0 0 0"/>
+                    </StackPanel>
+                </MenuItem.Header>
+            </MenuItem>
+        </Menu>
+
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Reservations}" AutoGenerateColumns="False" CanUserResizeColumns="True" Margin="0,2,0,3" Grid.RowSpan="3">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Numéro chambre" Binding="{Binding RoomNumber}" />
                 <DataGridTextColumn Header="Prénom" Binding="{Binding Firstname}" />
@@ -24,8 +37,60 @@
                 <DataGridTextColumn Header="Date d'arrivée" Binding="{Binding StartDate}" />
                 <DataGridTextColumn Header="Date de départ" Binding="{Binding EndDate}" />
                 <DataGridTextColumn Header="Type de chambre" Binding="{Binding TypeBedroom, Mode=OneTime}" />
-                
+
             </DataGrid.Columns>
         </DataGrid>
+
+        <Grid  Grid.Row="4" Grid.Column="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition Width="20"/>
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="24.875"/>
+                <RowDefinition Height="9.125"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="1" Grid.Column="1" Text="N° Chambre" FontSize="13" Margin="0,0,0,12" />
+            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="2" Grid.Column="1" Text="Prénom" FontSize="13" Margin="0,0,0,2.875" />
+            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="4" Grid.Column="1" Text="Nom" FontSize="13" Margin="0,0,0,11"/>
+            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="5" Grid.Column="1" Text="Type de Chambre" FontSize="13" Margin="0,0,0,11"/>
+
+
+            <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding ClientSelected.Firstname}" VerticalContentAlignment="Bottom" FontSize="13" />
+            <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding ClientSelected.Lastname}" VerticalContentAlignment="Bottom" FontSize="13" Grid.RowSpan="2" />
+            <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding ClientSelected.Phone}" VerticalContentAlignment="Bottom" FontSize="13" />
+            <TextBox Grid.Row="5" Grid.Column="2" Text="{Binding ClientSelected.Adress}" VerticalContentAlignment="Bottom" FontSize="13" />
+
+
+            <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Center" Grid.ColumnSpan="3" Margin="17,0,16,0">
+                <Button Command="{Binding SaveCommand}" >
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Edit" />
+                        <TextBlock Text="Editer" Margin="5 0 0 0" />
+                    </StackPanel>
+                </Button>
+                <Button Margin="20 20 0 20" Command="{Binding DeleteCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Delete" />
+                        <TextBlock Text="Supprimer" Margin="5 0 0 0" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+
     </Grid>
 </UserControl>

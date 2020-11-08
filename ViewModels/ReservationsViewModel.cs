@@ -13,7 +13,7 @@ namespace ProjetRESOTEL.ViewModels
 {
     class ReservationsViewModel : ViewModelBase
     {
-        public ObservableCollection<ReservationViewModel> Clients { get => _reservations; }
+        public ObservableCollection<ReservationViewModel> Reservations { get => _reservations; }
 
         private readonly ObservableCollection<ReservationViewModel> _reservations;
         private readonly ICollectionView _observer;

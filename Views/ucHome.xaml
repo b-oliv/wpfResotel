@@ -34,7 +34,14 @@
 
         <GridSplitter  Grid.Row="1" Grid.Column="2" Width="5" HorizontalAlignment="Stretch" Background="Gray"></GridSplitter>
 
-        <Calendar Grid.Row="1" Grid.Column="3" />
+        <Calendar Grid.Row="1" Grid.Column="3" SelectionMode="MultipleRange">
+            <Calendar.BlackoutDates>
+                <CalendarDateRange Start="11.01.2000" End="11.08.2020" />
+                <CalendarDateRange Start="11.16.2020" End="11.20.2020" />
+            </Calendar.BlackoutDates>
+        </Calendar>
+
+    
 
     </Grid>
 </UserControl>

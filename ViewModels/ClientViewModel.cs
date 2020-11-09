@@ -12,25 +12,15 @@ namespace ProjetRESOTEL.ViewModels
 {
     class ClientViewModel : ViewModelBase
     {
-        private Client client;
+        private readonly Client client;
 
         //Accesseur sur le modèle (Property en lecture seule)
-        public Client Client
-        {
-            get { return client; }
-        }
-
-        public ClientViewModel()
-        {}
+        public Client Client => client;
 
         //Initialisation de la vue modèle avec l'entité modèle
         public ClientViewModel(Client client)
         {
-            if (client == null)
-            {
-                throw new NullReferenceException("Client");
-            }
-            this.client = client;
+            this.client = client ?? throw new NullReferenceException("Client");
         }
 
         public string Firstname

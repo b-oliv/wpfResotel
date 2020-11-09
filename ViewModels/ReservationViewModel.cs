@@ -11,7 +11,7 @@ namespace ProjetRESOTEL.ViewModels
     class ReservationViewModel : ViewModelBase
     {
         //l'entité du modèle
-        private Reservation _reservation;
+        private readonly Reservation _reservation;
 
         //Accesseur sur le modèle (Property en lecture seule)
         public Reservation Reservation
@@ -20,14 +20,13 @@ namespace ProjetRESOTEL.ViewModels
             get { return _reservation; }
         }
 
+        public ReservationViewModel()
+        { }
+
         //Initialisation de la vue modèle avec l'entité modèle
         public ReservationViewModel(Reservation reservation)
         {
-            if (reservation == null)
-            {
-                throw new NullReferenceException("Reservation");
-            }
-            _reservation = reservation;
+            this._reservation = reservation ?? throw new NullReferenceException("Reservation");
         }
 
         public string Name

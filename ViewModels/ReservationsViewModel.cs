@@ -42,6 +42,38 @@ namespace ProjetRESOTEL.ViewModels
             }
         }
 
+        #region Recherche textuelle
+
+        //Propriété récupérant le texte de recherche saisi
+        public string TexteRechercher
+        {
+            set
+            {
+                _observer.Filter = item => IsMatch(item, value);
+                NotifyPropertyChanged("TexteRechercherNoMatch");
+            }
+        }
+
+        //Pour le setter : si la recherche est vide, on applique un style différent
+        public bool TexteRechercherNoMatch
+        {
+            get { return _observer.IsEmpty; }
+        }
+
+        // Méthode appellée pour chaque élément de la collection
+        // pour déterminer si l'élément correspond ou non à la recherche.
+        private bool IsMatch(object item, string value)
+        {
+            if (!(item is ReservationViewModel)) return false;
+
+            value = value.ToUpper();
+            ReservationViewModel p = (ReservationViewModel)item;
+            return (p.Reservation.Name.ToUpper().Contains(value)
+                    || p.Reservation.Name.ToUpper().Contains(value));
+        }
+
+        #endregion
+
 
     }
 }

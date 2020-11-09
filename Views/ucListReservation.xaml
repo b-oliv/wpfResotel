@@ -28,18 +28,19 @@
                 </MenuItem.Header>
             </MenuItem>
         </Menu>
-
+        
         <DataGrid Grid.Row="2" ItemsSource="{Binding Reservations}" AutoGenerateColumns="False" CanUserResizeColumns="True" Margin="0,2,0,3" Grid.RowSpan="3">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Numéro chambre" Binding="{Binding RoomNumber}" />
-                <DataGridTextColumn Header="Prénom" Binding="{Binding Firstname}" />
-                <DataGridTextColumn Header="Nom" Binding="{Binding Lastname}" />
-                <DataGridTextColumn Header="Date d'arrivée" Binding="{Binding StartDate}" />
-                <DataGridTextColumn Header="Date de départ" Binding="{Binding EndDate}" />
+                <DataGridTextColumn Header="Numéro chambre" Binding="{Binding RoomNumber, Mode=OneTime}" />
+                <DataGridTextColumn Header="Prénom" Binding="{Binding Firstname, Mode=OneTime}" />
+                <DataGridTextColumn Header="Nom" Binding="{Binding Lastname, Mode=OneTime}" />
+                <DataGridTextColumn Header="Date d'arrivée" Binding="{Binding StartDate, Mode=OneTime}" />
+                <DataGridTextColumn Header="Date de départ" Binding="{Binding EndDate, Mode=OneTime}" />
                 <DataGridTextColumn Header="Type de chambre" Binding="{Binding TypeBedroom, Mode=OneTime}" />
-
             </DataGrid.Columns>
         </DataGrid>
+        
+        
 
         <Grid  Grid.Row="4" Grid.Column="3">
             <Grid.ColumnDefinitions>
@@ -47,8 +48,8 @@
                 <ColumnDefinition Width="120"/>
                 <ColumnDefinition Width="250"/>
                 <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="220"/>
-                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="324"/>
+                <ColumnDefinition Width="62"/>
 
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -63,10 +64,10 @@
             </Grid.RowDefinitions>
 
 
-            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="1" Grid.Column="1" Text="N° Chambre" FontSize="13" Margin="0,0,0,12" />
-            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="2" Grid.Column="1" Text="Prénom" FontSize="13" Margin="0,0,0,2.875" />
-            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="4" Grid.Column="1" Text="Nom" FontSize="13" Margin="0,0,0,11"/>
-            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="5" Grid.Column="1" Text="Type de Chambre" FontSize="13" Margin="0,0,0,11"/>
+            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="1" Grid.Column="1" Text="N° Chambre" FontSize="13" Margin="0,0,0,12" Height="17" />
+            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="2" Grid.Column="1" Text="Prénom" FontSize="13" Margin="0,0,0,3" Height="17" />
+            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="4" Grid.Column="1" Text="Nom" FontSize="13" Margin="0,0,0,11" Height="17"/>
+            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="5" Grid.Column="1" Text="Type de Chambre" FontSize="13" Margin="0,0,0,11" Height="17"/>
 
 
             <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding ReservationSelected.RoomNumber, Mode=OneTime}" VerticalContentAlignment="Bottom" FontSize="13" />
@@ -74,15 +75,16 @@
             <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding ReservationSelected.Lastname, Mode=OneTime}" VerticalContentAlignment="Bottom" FontSize="13" />
             <TextBox Grid.Row="5" Grid.Column="2" Text="{Binding ReservationSelected.TypeBedroom, Mode=OneTime}" VerticalContentAlignment="Bottom" FontSize="13" />
 
+            
 
-            <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Center" Grid.ColumnSpan="3" Margin="17,0,16,0">
+            <StackPanel Orientation="Horizontal" Grid.Row="13" Grid.Column="4" HorizontalAlignment="Center" Margin="73,0,21,0" Width="230">
                 <Button Command="{Binding SaveCommand}" >
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Edit" />
                         <TextBlock Text="Editer" Margin="5 0 0 0" />
                     </StackPanel>
                 </Button>
-                <Button Margin="20 20 0 20" Command="{Binding DeleteCommand}">
+                <Button Margin="20 20 0 20" Command="{Binding DeleteCommand}" Width="119">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Delete" />
                         <TextBlock Text="Supprimer" Margin="5 0 0 0" />

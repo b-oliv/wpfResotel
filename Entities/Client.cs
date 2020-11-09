@@ -19,7 +19,8 @@ namespace ProjetRESOTEL.Entities
        
         [StringLength(80)]
         public string Lastname { get; set; }
-   
+
+        [Column("Phone")]
         public int Phone { get; set; }
         
         [StringLength(80)]

@@ -29,11 +29,11 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="1" Grid.Column="1" Text="Last Name" FontSize="15" />
-        <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="2" Grid.Column="1" Text="First Name" FontSize="15"/>
-        <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="3" Grid.Column="1" Text="Phone" FontSize="15"/>
+        <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="1" Grid.Column="1" Text="Nom" FontSize="15" />
+        <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="2" Grid.Column="1" Text="Prénom" FontSize="15"/>
+        <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="3" Grid.Column="1" Text="Téléphone" FontSize="15"/>
         <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="4" Grid.Column="1" Text="E-mail" FontSize="15"/>
-        <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="5" Grid.Column="1" Text="Adress" FontSize="15" />
+        <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="5" Grid.Column="1" Text="Adresse" FontSize="15" />
 
         <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Client.Firstname}" VerticalContentAlignment="Bottom" FontSize="13" />
         <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Client.Lastname}" FontSize="13"/>

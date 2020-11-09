@@ -32,6 +32,13 @@ namespace ProjetRESOTEL.ViewModels
             }
 
             _observer = CollectionViewSource.GetDefaultView(_reservations);
+            _observer.CurrentChanged += OnSelectedClientChanged;
+            _observer.MoveCurrentToLast();
+        }
+
+        private void OnSelectedClientChanged(object sender, EventArgs e)
+        {
+            NotifyPropertyChanged("ReservationSelected");
         }
 
         public ReservationViewModel ReservationSelected

@@ -28,24 +28,30 @@
                 </MenuItem.Header>
             </MenuItem>
         </Menu>
-        
-        <DataGrid Grid.Row="2" ItemsSource="{Binding Reservations}" AutoGenerateColumns="False" CanUserResizeColumns="True" Margin="0,2,0,3" Grid.RowSpan="3">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Numéro chambre" Binding="{Binding RoomNumber, Mode=OneTime}" />
-                <DataGridTextColumn Header="Prénom" Binding="{Binding Firstname, Mode=OneTime}" />
-                <DataGridTextColumn Header="Nom" Binding="{Binding Lastname, Mode=OneTime}" />
-                <DataGridTextColumn Header="Date d'arrivée" Binding="{Binding StartDate, Mode=OneTime}" />
-                <DataGridTextColumn Header="Date de départ" Binding="{Binding EndDate, Mode=OneTime}" />
-                <DataGridTextColumn Header="Type de chambre" Binding="{Binding TypeBedroom, Mode=OneTime}" />
-            </DataGrid.Columns>
-        </DataGrid>
-        
-        
 
-        <Grid  Grid.Row="4" Grid.Column="3">
+        <ListBox Grid.Row="2" Grid.Column="0" Grid.RowSpan="3" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Stretch"
+                 ItemsSource="{Binding Reservations}" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="BriefcaseAccountOutline" />
+                        <materialDesign:PackIcon Kind="AccountHeartOutline" />
+                        <TextBlock Text="{Binding RoomNumber}" Margin="5 0 0 0" />
+                        <TextBlock Text="{Binding Firstname}" Margin="5 0 0 0" />
+                        <TextBlock Text="{Binding Lastname}" Margin="5 0 0 0" />
+
+                        <TextBlock Text="{Binding StartDate}" Margin="5 0 0 0" />
+                        <TextBlock Text="{Binding EndDate}" Margin="5 0 0 0" />
+                        <TextBlock Text="{Binding TypeBedroom}" Margin="5 0 0 0" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Grid Grid.Row="4" Grid.Column="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="140"/>
                 <ColumnDefinition Width="250"/>
                 <ColumnDefinition Width="20"/>
                 <ColumnDefinition Width="324"/>
@@ -54,28 +60,24 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="24.875"/>
-                <RowDefinition Height="9.125"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-
-            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="1" Grid.Column="1" Text="N° Chambre" FontSize="13" Margin="0,0,0,12" Height="17" />
-            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="2" Grid.Column="1" Text="Prénom" FontSize="13" Margin="0,0,0,3" Height="17" />
-            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="4" Grid.Column="1" Text="Nom" FontSize="13" Margin="0,0,0,11" Height="17"/>
-            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="5" Grid.Column="1" Text="Type de Chambre" FontSize="13" Margin="0,0,0,11" Height="17"/>
+            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="2" Grid.Column="1" Text="Nom de la réservation" FontSize="13" Margin="0,0,0,5" Height="20" />
+            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="3" Grid.Column="1" Text="Date de début" FontSize="13" Margin="0,0,0,5" Height="20" />
+            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="4" Grid.Column="1" Text="Date de fin" FontSize="13" Margin="0,0,0,5" Height="20"/>
 
 
-            <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding ReservationSelected.RoomNumber, Mode=OneTime}" VerticalContentAlignment="Bottom" FontSize="13" />
-            <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding ReservationSelected.Firstname, Mode=OneTime}" VerticalContentAlignment="Bottom" FontSize="13" Grid.RowSpan="2" />
-            <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding ReservationSelected.Lastname, Mode=OneTime}" VerticalContentAlignment="Bottom" FontSize="13" />
-            <TextBox Grid.Row="5" Grid.Column="2" Text="{Binding ReservationSelected.TypeBedroom, Mode=OneTime}" VerticalContentAlignment="Bottom" FontSize="13" />
-
-            
+            <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding ReservationSelected.Name}" Margin="10,0,0,0" VerticalContentAlignment="Bottom" FontSize="13" />
+ 
+            <DatePicker Grid.Row="3" Grid.Column="2" SelectedDate="{Binding ReservationSelected.StartDate}"></DatePicker>
+            <DatePicker Grid.Row="4" Grid.Column="2" SelectedDate="{Binding ReservationSelected.EndDate}"></DatePicker>
 
             <StackPanel Orientation="Horizontal" Grid.Row="13" Grid.Column="4" HorizontalAlignment="Center" Margin="73,0,21,0" Width="230">
                 <Button Command="{Binding SaveCommand}" >

@@ -27,6 +27,8 @@ namespace ProjetRESOTEL.Service
             }
         }
 
+        #endregion
+
         private ReservationService() { }
 
         public bool SaveReservation(Reservation reservation)
@@ -35,7 +37,7 @@ namespace ProjetRESOTEL.Service
             {
                 if (reservation.IdReservation > 0)
                 {
-                    //le client existe, on l'attache au contexte pour le mettre à jour
+                    //la réervation existe, on l'attache au contexte pour la mettre à jour
                     context.Reservation.Attach(reservation);
                     //et on met son statut à modifié
                     context.Entry(reservation).State = EntityState.Modified;
@@ -51,7 +53,22 @@ namespace ProjetRESOTEL.Service
             return true;
         }
 
-        #endregion
+        internal bool DeleteReservation(Reservation reservation)
+        {
+            using (ResotelContext context = new ResotelContext())
+            {
+                if (reservation.IdReservation > 0)
+                {
+                    //la réervation existe, on l'attache au contexte pour la mettre à jour
+                    context.Reservation.Attach(reservation);
+                    //et on met son statut à modifié
+                    context.Entry(reservation).State = EntityState.Deleted;
+                }
+                //répercute les changements en base
+                context.SaveChanges();
+            }
+            return true;
+        }
 
         public List<Reservation> LoadReservations()
         {

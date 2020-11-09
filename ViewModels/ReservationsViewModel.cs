@@ -7,7 +7,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
+using System.Windows.Input;
 
 namespace ProjetRESOTEL.ViewModels
 {
@@ -48,6 +50,50 @@ namespace ProjetRESOTEL.ViewModels
                 return _observer.CurrentItem as ReservationViewModel;
             }
         }
+
+        #region Edit
+        //Commande enregistrer
+        public ICommand SaveCommand
+        {
+            get
+            {
+                return new RelayCommand(Edit);
+            }
+        }
+
+        private void Edit()
+        {
+            ReservationService.Instance.SaveReservation(ReservationSelected.Reservation);
+            MessageBox.Show("Reservation enregistrée !");
+        }
+
+        #endregion
+
+        #region Supprimer
+
+        //event de supression pour alerte la view modele parente
+        public event EventHandler EventSupprimer;
+
+        //Commande Supprimer
+        public ICommand DeleteCommand
+        {
+            get
+            {
+                //Comment supprimer cet élément ContactViewModel de la liste ListeContacts qui est dans ListeContactViewModels ?
+                return new RelayCommand(Delete);
+            }
+        }
+
+        private void Delete()
+        {
+            if (ReservationService.Instance.DeleteReservation(ReservationSelected.Reservation))
+            {
+                EventSupprimer?.Invoke(this, EventArgs.Empty);
+                MessageBox.Show("Reservation supprimé !");
+            }
+        }
+
+        #endregion
 
         #region Recherche textuelle
 

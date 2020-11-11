@@ -130,7 +130,7 @@ namespace ProjetRESOTEL.Service
                 var query = (from reservation in context.Reservation
                              join type in context.Client on reservation.IdClient equals type.IdClient
                              where reservation.IdReservation == idReservation
-                             select type).First();
+                             select type).First();  
 
                 firstname = query.Firstname;
             }

@@ -85,16 +85,18 @@ namespace ProjetRESOTEL.Views
             for (int i = 0; i < (numberOfItems * pagination); i++)
             {
 				DataGridTextColumn c = new DataGridTextColumn();
-				c.Header = currentDate;
+				c.Header = currentDate.AddDays(i);
 				c.Width = 135;
 				dgUsers.Columns.Add(c);
 			}
 
 			//génération des rows / check boolean isReserved à venir ...
 			for (int i = 0; i < bedrooms.Count; i++)
-			{
+			{	
+
 				//ajout une row[i]
 				dgUsers.Items.Add(bedrooms[i]);
+				
 			}
 		}
 

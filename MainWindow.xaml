@@ -22,6 +22,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Content="{Binding MainFrame}" ></Frame>
 
         <Menu Grid.ColumnSpan="3" Background="#333535" Foreground="white">
             <MenuItem Click="OnHomeButtonClick">

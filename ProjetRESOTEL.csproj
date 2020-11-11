@@ -66,6 +66,7 @@
     <Reference Include="System.Management" />
     <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -118,6 +119,9 @@
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\ClientViewModel.cs" />
     <Compile Include="ViewModels\ClientsViewModel.cs" />
+    <Compile Include="Views\ucConnexion.xaml.cs">
+      <DependentUpon>ucConnexion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ucCleanChamber.xaml.cs">
       <DependentUpon>ucCleanChamber.xaml</DependentUpon>
     </Compile>
@@ -151,6 +155,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ucConnexion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ucCleanChamber.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

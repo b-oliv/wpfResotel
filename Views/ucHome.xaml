@@ -3,45 +3,41 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ProjetRESOTEL.Views"
+             xmlns:local="clr-namespace:ProjetRESOTEL.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1200">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="20*"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="50*"/>
-            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="0"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="100*"/>
             <RowDefinition Height="600*"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,0,50,0">
-            <TextBlock Style="{DynamicResource StyleLabel}"  Text="Chambres libres" FontSize="15" />
-            <Button Content="Simple" Margin="10"></Button>
-            <Button Content="Double" Margin="10"></Button>
-            <Button Content="Avec Bébé" Margin="10"></Button>
-            <Button Content="3 Personnes" Margin="10"></Button>
-            <Button Content="4 Personnes" Margin="10"></Button>
-            <Button Content="6 Personnes" Margin="10"></Button>
-            <Button Content="Double avec Bébé" Margin="10"></Button>
-            <CheckBox Content="Option vue cours intérieure" Margin="10"></CheckBox>
-        </StackPanel>
+        <Menu Grid.Column="1" Grid.Row="1" Background="#333535" Foreground="white">
+            <MenuItem Background="#333535" Foreground="white">
+                <MenuItem.Header>
+                    <StackPanel Orientation="Vertical">
+                        <materialDesign:PackIcon Kind="Hotel" />
+                        <TextBlock Text="Planning" Margin="5 0 0 0"/>
+                    </StackPanel>
+                </MenuItem.Header>
+            </MenuItem>
+        </Menu>
 
-        <GridSplitter  Grid.Row="1" Grid.Column="2" Width="5" HorizontalAlignment="Stretch" Background="Gray"></GridSplitter>
+        <DataGrid Grid.Column="1" Grid.Row="2" Name="dgUsers" AutoGenerateColumns="False" 
+                  CanUserResizeColumns="False" CanUserSortColumns = "False"  CanUserReorderColumns="False"  
+                  IsReadOnly="True"   VerticalAlignment="Top" RowHeight="30" GridLinesVisibility="Vertical"
+                  ColumnWidth="100" Background="LightGray" RowBackground="LightYellow" 
+                  AlternatingRowBackground="LightBlue" BorderBrush="Gray" BorderThickness="5" >
+            <DataGrid.Columns>
 
-        <Calendar Grid.Row="1" Grid.Column="3" SelectionMode="MultipleRange">
-            <Calendar.BlackoutDates>
-                <CalendarDateRange Start="11.01.2000" End="11.08.2020" />
-                <CalendarDateRange Start="11.16.2020" End="11.20.2020" />
-            </Calendar.BlackoutDates>
-        </Calendar>
-
-    
-
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

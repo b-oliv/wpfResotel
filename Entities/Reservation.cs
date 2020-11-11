@@ -37,6 +37,12 @@ namespace ProjetRESOTEL.Entities
         public int IdBedroom { get; set; }
         public int IdClient { get; set; }
 
+        [NotMapped]
+        public Bedroom bedroom { get; set; }
+
+        [NotMapped]
+        public Client client { get; set; }
+
 
         public override string ToString()
         {

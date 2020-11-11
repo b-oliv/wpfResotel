@@ -19,5 +19,8 @@ namespace ProjetRESOTEL.Entities
         public int IdTypeBedroom { get; set; }
         public int IdOptionRooms { get; set; }
         public object IdClient { get; internal set; }
+
+        [NotMapped]
+        public string typeOfBedroom { get; set; }
     }
 }

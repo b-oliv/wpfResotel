@@ -43,5 +43,24 @@ namespace ProjetRESOTEL.Service
             return bedrooms;
         }
 
+
+        public string TypeOfRoom(int idBedroom)
+        {
+
+            String typeOfRoom = "NA";
+
+            using (ResotelContext context = new ResotelContext())
+            {
+                var query = (from bedroom in context.Bedroom
+                             join type in context.Typebedroom on bedroom.IdTypeBedroom equals type.IdTypeBedroom
+                             where bedroom.IdBedroom == idBedroom
+                             select type).First();
+
+                typeOfRoom = query.Name;
+            }
+
+            return typeOfRoom;
+        }
+
     }
 }

@@ -7,6 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1200">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="https://www.myhoteldeluxe.com/wp-content/uploads/2019/01/hotel-luxe-londres.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0"/>
             <ColumnDefinition Width="200*"/>
@@ -14,30 +17,41 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0"/>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="600*"/>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="700*"/>
         </Grid.RowDefinitions>
 
         <Menu Grid.Column="1" Grid.Row="1" Background="#333535" Foreground="white">
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <DockPanel HorizontalAlignment="Stretch"/>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
             <MenuItem Background="#333535" Foreground="white">
                 <MenuItem.Header>
-                    <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Hotel" />
                         <TextBlock Text="Planning" Margin="5 0 0 0"/>
                     </StackPanel>
                 </MenuItem.Header>
             </MenuItem>
+            <MenuItem Background="#333535" Foreground="white"  HorizontalAlignment="right">
+                <MenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Name="btnPrev" Margin="0,0,10,0" Click="OnClickPrev">
+                            <materialDesign:PackIcon Kind="PagePrevious" />
+                        </Button>
+                        <Button Name="btnNext" Click="OnClickNext">
+                            <materialDesign:PackIcon Kind="PageNext" />
+                        </Button>
+                    </StackPanel>
+                </MenuItem.Header>
+            </MenuItem>
         </Menu>
 
-        <DataGrid Grid.Column="1" Grid.Row="2" Name="dgUsers" AutoGenerateColumns="False" 
-                  CanUserResizeColumns="False" CanUserSortColumns = "False"  CanUserReorderColumns="False"  
-                  IsReadOnly="True"   VerticalAlignment="Top" RowHeight="30" GridLinesVisibility="Vertical"
-                  ColumnWidth="100" Background="LightGray" RowBackground="LightYellow" 
-                  AlternatingRowBackground="LightBlue" BorderBrush="Gray" BorderThickness="5" >
-            <DataGrid.Columns>
+        <Grid Grid.Column="1" Grid.Row="2" Name="DynamicGrid" Background="#D9DEDE" Opacity="0.5">
 
-            </DataGrid.Columns>
-        </DataGrid>
+        </Grid>
+
     </Grid>
 </UserControl>

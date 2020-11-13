@@ -102,6 +102,7 @@
     </ApplicationDefinition>
     <Compile Include="Converters\BoolToBackgroundConverter.cs" />
     <Compile Include="Entities\Bedroom.cs" />
+    <Compile Include="Entities\ItemReservation.cs" />
     <Compile Include="Entities\Reservation.cs" />
     <Compile Include="Entities\Client.cs" />
     <Compile Include="Entities\Typebedroom.cs" />
@@ -112,6 +113,8 @@
     <Compile Include="Service\ReservationService.cs" />
     <Compile Include="ViewModels\BedroomViewModel.cs" />
     <Compile Include="ViewModels\BedroomsViewModel.cs" />
+    <Compile Include="ViewModels\ItemReservationViewModel.cs" />
+    <Compile Include="ViewModels\ItemsReservationViewModel.cs" />
     <Compile Include="ViewModels\IObserver.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\ReservationViewModel.cs" />

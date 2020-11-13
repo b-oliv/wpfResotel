@@ -38,19 +38,20 @@
             <MenuItem Background="#333535" Foreground="white"  HorizontalAlignment="right">
                 <MenuItem.Header>
                     <StackPanel Orientation="Horizontal">
-                        <Button Name="btnPrev" Margin="0,0,10,0" Click="OnClickPrev">
+                        <Button Name="btnPrev" Margin="0,0,10,0"  Click="btnPrev_Click">
                             <materialDesign:PackIcon Kind="PagePrevious" />
                         </Button>
-                        <Button Name="btnNext" Click="OnClickNext">
+                        <Button Name="btnNext"  Click="btnNext_Click">
                             <materialDesign:PackIcon Kind="PageNext" />
                         </Button>
+                        <TextBlock Text="{Binding Item}" Margin="5 0 0 0"/>
                     </StackPanel>
                 </MenuItem.Header>
             </MenuItem>
         </Menu>
 
         <Grid Grid.Column="1" Grid.Row="2" Name="DynamicGrid" Background="#D9DEDE" Opacity="0.5">
-
+    
         </Grid>
 
     </Grid>

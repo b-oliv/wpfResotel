@@ -1,5 +1,6 @@
 ﻿using ProjetRESOTEL.Entities;
 using ProjetRESOTEL.Service;
+using ProjetRESOTEL.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -23,53 +24,141 @@ namespace ProjetRESOTEL.Views
 	/// </summary>
 	public partial class ucHome : UserControl
 	{
-
-		private readonly List<Bedroom> bedrooms = new List<Bedroom>();
-		private readonly List<Reservation> reservations = new List<Reservation>();
-		private DateTime currentDate = DateTime.Now;
-		private int pagination = 1;
-		private int numberOfItems = 7;
-
-		private Bedroom GetRoom(int idBedrrom)
-		{
-			Bedroom bedroom = new Bedroom();
-			foreach (Bedroom room in bedrooms)
-			{
-				if (room.IdBedroom == idBedrrom)
-				{
-					bedroom = room;
-
-				}
-			}
-			return bedroom;
-		}
-
-
-
+		ItemsReservationViewModel items;
 		public ucHome()
 		{
-
+		
 			InitializeComponent();
+			InitFixGrid();
 
-			// Service charger les chambres
-			bedrooms = BedroomService.Instance.LoadBedrooms();
-			foreach (Bedroom room in bedrooms)
+			//To Define Context
+			DataContext = new ViewModels.ItemsReservationViewModel();
+			items = DataContext as ItemsReservationViewModel;
+			CreateGridTemplate();
+			LoadData(items);
+
+		}
+
+		private void CreateGridTemplate()
+        {
+			// Create column date/reservation
+			for (int i = 0; i < (items.numberOfItems * items.pagination); i++)
 			{
-				room.typeOfBedroom = BedroomService.Instance.TypeOfRoom(room.IdBedroom);
+				ColumnDefinition gridColDynamic = new ColumnDefinition();
+				DynamicGrid.ColumnDefinitions.Add(gridColDynamic);
 			}
 
-			// Service charger les réservation
-			reservations = ReservationService.Instance.LoadReservations();
-			foreach (Reservation room in reservations)
+			// Create row by rooms
+			for (int i = 0; i < items.bedrooms.Count; i++)
 			{
-				room.bedroom = GetRoom(room.IdBedroom);
+				RowDefinition gridRow = new RowDefinition();
+				DynamicGrid.RowDefinitions.Add(gridRow);
 			}
 
-			currentDate = DateTime.Now;
 
-			//Params Grid
+		}
+
+		private void RefreshItemsGrid()
+        {
+			//refresh items
+			for (int i = 0; i < items.bedrooms.Count; i++)
+			{
+				for (int j = 0; j < items.numberOfItems; j++)
+				{
+					TextBlock res = new TextBlock();
+					res.Text = "";
+					res.Background = new SolidColorBrush(Colors.White);
+					res.TextAlignment = TextAlignment.Center;
+					res.VerticalAlignment = VerticalAlignment.Center;
+					Grid.SetRow(res, i + 1);
+					Grid.SetColumn(res, j + 2);
+					DynamicGrid.Children.Add(res);
+				}
+			}
+		}
+
+		private void LoadData(ItemsReservationViewModel items)
+		{
+			AddHeaderToGrid(items);
+			AddColumnRoomAndTypeToGrid(items);
+			AddItemsReservationToGrid(items);
+		}
+
+		private void AddItemsReservationToGrid(ItemsReservationViewModel items)
+        {
+			// Check reservation
+			for (int i = 0; i < items.bedrooms.Count; i++)
+			{
+				for (int j = 0; j < items.numberOfItems; j++)
+				{
+					TextBlock res = new TextBlock();
+					if (items.IsReserved(items.bedrooms[i].IdBedroom, j))
+					{
+						res.Background = new SolidColorBrush(Colors.Red);
+					}
+					res.Text = "";
+					res.TextAlignment = TextAlignment.Center;
+					res.VerticalAlignment = VerticalAlignment.Center;
+					Grid.SetRow(res, i + 1);
+					Grid.SetColumn(res, j + 2);
+					DynamicGrid.Children.Add(res);
+				}
+			}
+		}
+
+		private void AddColumnRoomAndTypeToGrid(ItemsReservationViewModel items)
+        {
+
+			// Add rooms and types
+			for (int i = 0; i < items.bedrooms.Count; i++)
+			{
+				//create dynamic NumberOfRoom
+				TextBlock NumberOfRoom = new TextBlock();
+				NumberOfRoom.Text = "N° " + items.bedrooms[i].RoomNumber;
+				NumberOfRoom.FontSize = 18;
+				NumberOfRoom.TextAlignment = TextAlignment.Center;
+				NumberOfRoom.VerticalAlignment = VerticalAlignment.Center;
+				Grid.SetRow(NumberOfRoom, i + 1);
+				Grid.SetColumn(NumberOfRoom, 0);
+				DynamicGrid.Children.Add(NumberOfRoom);
+
+				//create dynamic TypeOfRoom
+				TextBlock TypeOfRoom = new TextBlock();
+				TypeOfRoom.Text = "" + items.bedrooms[i].typeOfBedroom;
+				TypeOfRoom.FontSize = 18;
+				TypeOfRoom.TextAlignment = TextAlignment.Center;
+				TypeOfRoom.VerticalAlignment = VerticalAlignment.Center;
+				Grid.SetRow(TypeOfRoom, i + 1);
+				Grid.SetColumn(TypeOfRoom, 1);
+				DynamicGrid.Children.Add(TypeOfRoom);
+			}
+		}
+
+		private void AddHeaderToGrid(ItemsReservationViewModel items)
+        {
+			// Dynamic Header with dates values
+			for (int i = 0; i < (items.numberOfItems * items.pagination); i++)
+			{
+				var date = items.currentDate.AddDays(i).ToString("dd MMMM");
+				int position = i + 2;
+				//create dynamic header
+				TextBlock dateHeader = new TextBlock();
+				dateHeader.Text = "" + date;
+				dateHeader.FontSize = 18;
+				dateHeader.Background = new SolidColorBrush(Colors.DimGray);
+				dateHeader.Foreground = new SolidColorBrush(Colors.White);
+				dateHeader.TextAlignment = TextAlignment.Center;
+				Grid.SetRow(dateHeader, 0);
+				Grid.SetColumn(dateHeader, position);
+				DynamicGrid.Children.Add(dateHeader);
+			}
+		}
+
+		private void InitFixGrid()
+        {
+			//Init Grid
 			DynamicGrid.ShowGridLines = true;
-
+			//Params Grid
 			ColumnDefinition gridCol1 = new ColumnDefinition();
 			DynamicGrid.ColumnDefinitions.Add(gridCol1);
 			ColumnDefinition gridCol2 = new ColumnDefinition();
@@ -94,120 +183,20 @@ namespace ProjetRESOTEL.Views
 			Grid.SetRow(HeaderTypeRoom, 0);
 			Grid.SetColumn(HeaderTypeRoom, 1);
 			DynamicGrid.Children.Add(HeaderTypeRoom);
-
-			// Dynamic Header with dates values
-			for (int i = 0; i < (numberOfItems * pagination); i++)
-			{
-				var date = currentDate.AddDays(i).ToString("dd MMMM");
-				int position = i + 2;
-				ColumnDefinition gridColDynamic = new ColumnDefinition();
-				DynamicGrid.ColumnDefinitions.Add(gridColDynamic);
-				//create dynamic header
-				TextBlock dateHeader = new TextBlock();
-				dateHeader.Text = date + "";
-				dateHeader.FontSize = 18;
-				dateHeader.Background = new SolidColorBrush(Colors.DimGray);
-				dateHeader.Foreground = new SolidColorBrush(Colors.White);
-				dateHeader.TextAlignment = TextAlignment.Center;
-				Grid.SetRow(dateHeader, 0);
-				Grid.SetColumn(dateHeader, position);
-				DynamicGrid.Children.Add(dateHeader);
-			}
-
-			// Add rooms and types
-			for (int i = 0; i < bedrooms.Count; i++)
-			{
-				RowDefinition gridRow = new RowDefinition();
-				DynamicGrid.RowDefinitions.Add(gridRow);
-
-				//create dynamic NumberOfRoom
-				TextBlock NumberOfRoom = new TextBlock();
-				NumberOfRoom.Text = "N° " + bedrooms[i].RoomNumber;
-				NumberOfRoom.FontSize = 18;
-				NumberOfRoom.TextAlignment = TextAlignment.Center;
-				NumberOfRoom.VerticalAlignment = VerticalAlignment.Center;
-				Grid.SetRow(NumberOfRoom, i + 1);
-				Grid.SetColumn(NumberOfRoom, 0);
-				DynamicGrid.Children.Add(NumberOfRoom);
-
-				//create dynamic TypeOfRoom
-				TextBlock TypeOfRoom = new TextBlock();
-				TypeOfRoom.Text = "" + bedrooms[i].typeOfBedroom;
-				TypeOfRoom.FontSize = 18;
-				TypeOfRoom.TextAlignment = TextAlignment.Center;
-				TypeOfRoom.VerticalAlignment = VerticalAlignment.Center;
-				Grid.SetRow(TypeOfRoom, i + 1);
-				Grid.SetColumn(TypeOfRoom, 1);
-				DynamicGrid.Children.Add(TypeOfRoom);
-			}
-
-			// Check reservation
-			for (int i = 0; i < bedrooms.Count; i++)
-			{
-				for (int j = 0; j < numberOfItems; j++)
-				{
-					TextBlock res = new TextBlock();
-					if (IsReserved(bedrooms[i].IdBedroom, j))
-					{
-						res.Text = "";
-						res.Background = new SolidColorBrush(Colors.Red);
-					}
-					else
-					{
-						res.Text = "";
-					}
-					res.TextAlignment = TextAlignment.Center;
-					res.VerticalAlignment = VerticalAlignment.Center;
-					Grid.SetRow(res, i + 1);
-					Grid.SetColumn(res, j + 2);
-					DynamicGrid.Children.Add(res);
-				}
-			}
 		}
 
-		private bool IsReserved(int idBedrooms, int index)
-		{
-			bool isReserved = false;
-			var date = currentDate.AddDays(index);
-			foreach (Reservation reservation in reservations)
-			{
-				if (reservation.bedroom.IdBedroom == idBedrooms)
-				{
-					isReserved = CheckOutDate(date, reservation.StartDate, reservation.EndDate);
-
-				}
-			}
-			return isReserved;
+        private void btnPrev_Click(object sender, RoutedEventArgs e)
+        {
+			items.RefreshMoveToPrev();
+			RefreshItemsGrid();
+			LoadData(items);
 		}
 
-		private bool CheckOutDate(DateTime curent, DateTime start, DateTime end)
-		{
-			bool isOut = false;
-			int resultStart = DateTime.Compare(curent, start);
-			int resultEnd = DateTime.Compare(curent, end);
-			if (resultStart > 0 && resultEnd < 0)
-			{
-				isOut = true;
-			}
-			else if (resultStart == 0)
-			{
-				isOut = true;
-			}
-
-			return isOut;
+        private void btnNext_Click(object sender, RoutedEventArgs e)
+        {
+			items.RefreshMoveToNext();
+			RefreshItemsGrid();
+			LoadData(items);
 		}
-
-		void OnClickPrev(object sender, RoutedEventArgs e)
-		{
-			MessageBox.Show("Prev planning Not implements yet");
-			currentDate = currentDate.AddDays(-7);
-		}
-
-		void OnClickNext(object sender, RoutedEventArgs e)
-		{
-			MessageBox.Show("Next Not implements yet");
-			currentDate = currentDate.AddDays(+7);
-		}
-
-	}
+    }
 }

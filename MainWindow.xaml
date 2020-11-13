@@ -12,7 +12,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="Réservations RESOTEL" 
-        Height="900" Width="1200" MinHeight="700" MinWidth="900" 
+        Height="900" Width="1200" MinHeight="700" MinWidth="1200" 
         WindowState="Normal">
     <Grid>
         <Grid.ColumnDefinitions>

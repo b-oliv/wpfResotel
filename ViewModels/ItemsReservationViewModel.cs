@@ -56,8 +56,12 @@ namespace ProjetRESOTEL.ViewModels
             currentDate = currentDate.AddDays(-7);
         }
 
+        public void AddReservation()
+        {
+            MessageBox.Show("Functionalities not implements yet");
+        }
 
-    private Bedroom GetRoom(int idBedrrom)
+        private Bedroom GetRoom(int idBedrrom)
         {
             Bedroom bedroom = new Bedroom();
             foreach (Bedroom room in bedrooms)

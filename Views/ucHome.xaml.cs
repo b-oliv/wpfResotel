@@ -100,6 +100,11 @@ namespace ProjetRESOTEL.Views
 					if (items.IsReserved(items.bedrooms[i].IdBedroom, j))
 					{
 						res.Background = new SolidColorBrush(Colors.Red);
+                    }
+                    else
+                    {
+						res.Cursor = Cursors.Hand;
+                        res.MouseLeftButtonDown += Res_MouseLeftButtonDown;
 					}
 					res.Text = "";
 					res.TextAlignment = TextAlignment.Center;
@@ -110,6 +115,12 @@ namespace ProjetRESOTEL.Views
 				}
 			}
 		}
+
+        private void Res_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+			items.AddReservation();
+		}
+
 
 		private void AddColumnRoomAndTypeToGrid(ItemsReservationViewModel items)
         {

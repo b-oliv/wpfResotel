@@ -107,7 +107,8 @@ namespace ProjetRESOTEL.Views
 						res.MouseLeftButtonDown += new MouseButtonEventHandler((s, e) => Res_MouseLeftButtonDown(s, e, i));
 					}
 					res.Text = "";
-					res.Name = ("c" + j) ;
+					//(first c is column / second c is roomnumber) it's use to split info for modal
+					res.Name = ("c" + j + "c" + items.bedrooms[i].RoomNumber) ;
 					res.TextAlignment = TextAlignment.Center;
 					res.VerticalAlignment = VerticalAlignment.Center;
 					Grid.SetRow(res, i + 1);
@@ -119,11 +120,12 @@ namespace ProjetRESOTEL.Views
 
         private void Res_MouseLeftButtonDown(object sender, MouseButtonEventArgs e, int dayToIncrement)
         {
-			var y = sender as TextBlock;
-			string yu = y.Name;
-			string[] split = yu.Split('c');
-			int gr = Int32.Parse(split[1]);
-			items.AddReservationAsync(gr);
+			var textBlock = sender as TextBlock;
+			string nameOfTextBlock = textBlock.Name;
+			string[] split = nameOfTextBlock.Split('c');
+			int column = Int32.Parse(split[1]);
+			string roomNumber = split[2];
+			items.AddReservationAsync(column, roomNumber);
 		}
 
 

@@ -29,6 +29,8 @@ namespace ProjetRESOTEL.ViewModels
         private DateTime _currentDate;
         private DateTime _selectedDate;
         private DateTime _endDate;
+        private string _roomNumber;
+        public int idClientSelected;
         public DateTime currentDate
         {
             get
@@ -66,6 +68,19 @@ namespace ProjetRESOTEL.ViewModels
             {
                 _endDate = value;
                 NotifyPropertyChanged("endDate");
+            }
+        }
+        public string roomNumber
+        {
+            get
+            {
+                return _roomNumber;
+            }
+
+            set
+            {
+                _roomNumber = value;
+                NotifyPropertyChanged("roomNumber");
             }
         }
 
@@ -117,11 +132,45 @@ namespace ProjetRESOTEL.ViewModels
             currentDate = currentDate.AddDays(-7);
         }
 
-        public void AddReservationAsync(int days)
+        public void AddReservationAsync(int days, string room)
         {
             selectedDate = currentDate.AddDays(days);
             endDate = currentDate.AddDays(days+1);
+            roomNumber = room;
             DialogHost.Show(new ucDialog());
+        }
+
+        public void InsertReservation()
+        {
+            List<Client> listClient = ClientService.Instance.LoadClients();
+            Client cl = new Client();
+            foreach (Client person in listClient)
+            {
+                if (person.IdClient == idClientSelected)
+                {
+                    cl = person;
+                }
+            }
+            Bedroom bedroom = new Bedroom();
+            foreach (Bedroom room in bedrooms)
+            {
+                if (room.RoomNumber == int.Parse(this.roomNumber))
+                {
+                    bedroom = room;
+                }
+            }
+            Reservation reserv = new Reservation();
+            reserv.IdBedroom = bedroom.IdBedroom;
+            reserv.IdClient = idClientSelected;
+            reserv.IdOption = 0;
+            reserv.StartDate = selectedDate;
+            reserv.EndDate = endDate;
+            reserv.AmountPaiement = 0;
+            reserv.Name = cl.Lastname + " - " + cl.Firstname;
+            reserv.DatePaiement = DateTime.Now;
+            //ReservationService.Instance.SaveReservation(reserv);
+            NotifyPropertyChanged("ItemSelected");
+            ((MainWindow)System.Windows.Application.Current.MainWindow).UpdateLayout();
         }
 
         private Bedroom GetRoom(int idBedrrom)

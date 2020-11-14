@@ -29,8 +29,11 @@ namespace ProjetRESOTEL.Views
 
         private void Button_Click_Reserve(object sender, RoutedEventArgs e)
         {
+            ItemsReservationViewModel dc = DataContext as ItemsReservationViewModel;
+            ClientViewModel clientSelected = ClientSelected.SelectedItem as ClientViewModel;
+            dc.idClientSelected = clientSelected.Client.IdClient;
+            dc.InsertReservation();
             MessageBox.Show("Réservation Enregistrée !!");
-            // Ici tratement et envoie des data au service pour persistence des data en base
         }
     }
 }

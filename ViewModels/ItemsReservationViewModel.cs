@@ -28,7 +28,6 @@ namespace ProjetRESOTEL.ViewModels
         private List<Reservation> reservations = new List<Reservation>();
         private DateTime _currentDate;
         private DateTime _selectedDate;
-        private Client _client;
         private DateTime _endDate;
         public DateTime currentDate
         {
@@ -69,25 +68,42 @@ namespace ProjetRESOTEL.ViewModels
                 NotifyPropertyChanged("endDate");
             }
         }
-        public Client client
+
+        //la liste des contacts via leur vue-modèle de représentation
+        private readonly ObservableCollection<ClientViewModel> clients;
+        public ObservableCollection<ClientViewModel> Client
         {
             get
             {
-                return _client;
-            }
-
-            set
-            {
-                _client = value;
-                NotifyPropertyChanged("client");
+                return clients;
             }
         }
+
+        //observateur de la liste observable
+        private readonly ICollectionView observer;
         public int pagination = 1;
         public int numberOfItems = 7;
 
         public ItemsReservationViewModel()
         {
             currentDate = DateTime.Now;
+
+            //load clients
+            List<Client> listClient = ClientService.Instance.LoadClients();
+
+            //créé la liste des viewsmodeles pour chaque entité
+            clients = new ObservableCollection<ClientViewModel>();
+            foreach (Client person in listClient)
+            {
+                ClientViewModel vm = new ClientViewModel(person);
+                clients.Add(vm);
+            }
+
+            //lier l'observer à la liste
+            observer = CollectionViewSource.GetDefaultView(listClient);
+
+            observer.MoveCurrentToLast();
+
             InitItemsReservationPlanning();
         }
 
@@ -122,6 +138,7 @@ namespace ProjetRESOTEL.ViewModels
         }
 
         private void InitItemsReservationPlanning() {
+
             //Init item source planning
             List<ItemReservation> lst = new List<ItemReservation>();
 

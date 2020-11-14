@@ -38,7 +38,6 @@ namespace ProjetRESOTEL.Views
 			items = DataContext as ItemsReservationViewModel;
 			CreateGridTemplate();
 			LoadData(items);
-
 		}
 
 		private void CreateGridTemplate()

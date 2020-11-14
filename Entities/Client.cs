@@ -32,7 +32,7 @@ namespace ProjetRESOTEL.Entities
 
         public override string ToString()
         {
-            return $"Client {Firstname} {Lastname}";
+            return $"{Lastname} {Firstname} ";
         }
     }
 }

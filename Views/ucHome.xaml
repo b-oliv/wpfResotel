@@ -50,9 +50,17 @@
             </MenuItem>
         </Menu>
 
-        <Grid Grid.Column="1" Grid.Row="2" Name="DynamicGrid" Background="#D9DEDE" Opacity="0.8">
-    
-        </Grid>
+        <materialDesign:DialogHost Name="dh" Grid.Column="1" Grid.Row="2" CloseOnClickAway="True" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                        DialogTheme="Inherit">
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel Margin="16">
+                    <TextBlock Text="Add a new fruit."/>
+                    <TextBox Margin="0 8 0 0" HorizontalAlignment="Stretch" x:Name="Item"/>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+
+        <Grid Grid.Column="1" Grid.Row="2" Name="DynamicGrid" Background="#D9DEDE" Opacity="0.8"></Grid>
 
     </Grid>
 </UserControl>

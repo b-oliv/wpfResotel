@@ -131,6 +131,9 @@
     <Compile Include="Views\ucCheckFood.xaml.cs">
       <DependentUpon>ucCheckFood.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ucDialog.xaml.cs">
+      <DependentUpon>ucDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ucEditClient.xaml.cs">
       <DependentUpon>ucEditClient.xaml</DependentUpon>
     </Compile>
@@ -169,6 +172,10 @@
     <Page Include="Views\ucCheckFood.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ucDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ucEditClient.xaml">
       <Generator>MSBuild:Compile</Generator>

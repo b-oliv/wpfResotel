@@ -8,6 +8,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -104,9 +105,10 @@ namespace ProjetRESOTEL.Views
                     else
                     {
 						res.Cursor = Cursors.Hand;
-                        res.MouseLeftButtonDown += Res_MouseLeftButtonDown;
+						res.MouseLeftButtonDown += new MouseButtonEventHandler((s, e) => Res_MouseLeftButtonDown(s, e, i));
 					}
 					res.Text = "";
+					res.Name = ("c" + j) ;
 					res.TextAlignment = TextAlignment.Center;
 					res.VerticalAlignment = VerticalAlignment.Center;
 					Grid.SetRow(res, i + 1);
@@ -116,9 +118,13 @@ namespace ProjetRESOTEL.Views
 			}
 		}
 
-        private void Res_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Res_MouseLeftButtonDown(object sender, MouseButtonEventArgs e, int dayToIncrement)
         {
-			items.AddReservation();
+			var y = sender as TextBlock;
+			string yu = y.Name;
+			string[] split = yu.Split('c');
+			int gr = Int32.Parse(split[1]);
+			items.AddReservationAsync(gr);
 		}
 
 

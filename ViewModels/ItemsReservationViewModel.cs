@@ -1,4 +1,5 @@
-﻿using ProjetRESOTEL.Entities;
+﻿using MaterialDesignThemes.Wpf;
+using ProjetRESOTEL.Entities;
 using ProjetRESOTEL.Service;
 using ProjetRESOTEL.Views;
 using System;
@@ -27,6 +28,8 @@ namespace ProjetRESOTEL.ViewModels
         private List<Reservation> reservations = new List<Reservation>();
         private DateTime _currentDate;
         private DateTime _selectedDate;
+        private Client _client;
+        private DateTime _endDate;
         public DateTime currentDate
         {
             get
@@ -53,6 +56,32 @@ namespace ProjetRESOTEL.ViewModels
                 NotifyPropertyChanged("selectedDate");
             }
         }
+        public DateTime endDate
+        {
+            get
+            {
+                return _endDate;
+            }
+
+            set
+            {
+                _endDate = value;
+                NotifyPropertyChanged("endDate");
+            }
+        }
+        public Client client
+        {
+            get
+            {
+                return _client;
+            }
+
+            set
+            {
+                _client = value;
+                NotifyPropertyChanged("client");
+            }
+        }
         public int pagination = 1;
         public int numberOfItems = 7;
 
@@ -72,10 +101,11 @@ namespace ProjetRESOTEL.ViewModels
             currentDate = currentDate.AddDays(-7);
         }
 
-        public async Task AddReservationAsync(int days)
+        public void AddReservationAsync(int days)
         {
             selectedDate = currentDate.AddDays(days);
-            await MaterialDesignThemes.Wpf.DialogHost.Show(new ucDialog());
+            endDate = currentDate.AddDays(days+1);
+            DialogHost.Show(new ucDialog());
         }
 
         private Bedroom GetRoom(int idBedrrom)

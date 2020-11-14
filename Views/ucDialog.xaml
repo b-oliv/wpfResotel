@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ProjetRESOTEL.Views"
+             xmlns:local="clr-namespace:ProjetRESOTEL.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Margin="16">
@@ -18,18 +18,50 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Margin="0 20 0 0" Style="{DynamicResource MaterialDesignLabel}"> Client: </Label>
+        <materialDesign:DialogHost Name="dialog_about" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" CloseOnClickAway="true">
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel Margin="16">
+                    <StackPanel Width="350" Height="200">
+                        <Label 
+                        HorizontalAlignment="Center" 
+                        FontWeight="Medium"
+                        FontSize="15"
+                        Foreground="{DynamicResource PrimaryHueDarkBrush}"
+                        Margin="0,15,0,10">
+                            Password please
+                        </Label>
+                        <PasswordBox 
+                        Name="txt_Password"
+                        Margin="15,0,0,15" 
+                        HorizontalAlignment="Center">
+                        </PasswordBox>
+                    </StackPanel>
+
+                    <Button 
+                    Name="btn_DialogClose"
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                    IsDefault="True"
+                    Margin="0 8 8 0"
+                    MaxWidth="100"
+                    Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                    Content="Submit"/>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+
+        <Label HorizontalAlignment="Center" FontWeight="Medium" FontSize="15" Foreground="{DynamicResource PrimaryHueDarkBrush}"
+                         Grid.Row="0" Grid.Column="0" Margin="0 20 0 0" Style="{DynamicResource MaterialDesignLabel}"> Client: </Label>
         <Label Grid.Row="1" Grid.Column="0" Margin="0 20 0 0" >Date de début:</Label>
         <Label Grid.Row="2" Grid.Column="0" Margin="0 20 0 0">Date de fin:</Label>
 
         <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Path=Items.reservation}" SelectedValuePath="Name"  DisplayMemberPath="Name" Style="{DynamicResource MaterialDesignFloatingHintComboBox}" />
         <DatePicker Grid.Row="1" Grid.Column="1" Text="{Binding selectedDate}" SelectedDate="{Binding selectedDate}" Style="{DynamicResource MaterialDesignFloatingHintDatePicker}" Margin="0 6 0 0" FontSize="18" />
-        <DatePicker Grid.Row="2" Grid.Column="1" SelectedDate="{Binding selectedDate}" Text="cdc" Margin="0 6 0 0" FontSize="18"/>
+        <DatePicker Grid.Row="2" Grid.Column="1" SelectedDate="{Binding endDate}" Text="cdc" Margin="0 6 0 0" FontSize="18"/>
         <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Margin="0 16 0 0">
-            <Button IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding AcceptCommand}">
+            <Button IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}" Click="Button_Click_Reserve" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
                 Réserver
             </Button>
-            <Button IsCancel="True" Margin="8 0 0 0" Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding CancelCommand}">
+            <Button IsCancel="True" Margin="8 0 0 0" Style="{DynamicResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
                 Annuler
             </Button>
         </StackPanel>

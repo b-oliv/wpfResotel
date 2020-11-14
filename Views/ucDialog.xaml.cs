@@ -1,4 +1,5 @@
-﻿using ProjetRESOTEL.ViewModels;
+﻿using MaterialDesignThemes.Wpf;
+using ProjetRESOTEL.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,12 @@ namespace ProjetRESOTEL.Views
         public ucDialog()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click_Reserve(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Réservation Enregistrée !!");
+            // Ici tratement et envoie des data au service pour persistence des data en base
         }
     }
 }

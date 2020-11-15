@@ -93,20 +93,20 @@ namespace ProjetRESOTEL.ViewModels
 
 
 
-        #region Recherche textuelle
+        #region Search
 
         //Propriété récupérant le texte de recherche saisi
-        public string TexteRechercher
+        public string Search
         {
             set
             {
                 _observer.Filter = item => IsMatch(item, value);
-                NotifyPropertyChanged("TexteRechercherNoMatch");
+                NotifyPropertyChanged("SearchNoMatch");
             }
         }
 
         //Pour le setter : si la recherche est vide, on applique un style différent
-        public bool TexteRechercherNoMatch
+        public bool SearchNoMatch
         {
             get { return _observer.IsEmpty; }
         }

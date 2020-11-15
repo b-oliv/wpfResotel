@@ -4,6 +4,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
              xmlns:local="clr-namespace:ProjetRESOTEL"
+             xmlns:conv="clr-namespace:ProjetRESOTEL.Converters"
              StartupUri="MainWindow.xaml">
             <!-- FOR PROD -> StartupUri="Views/ucConnexion.xaml"> -->
     <Application.Resources>
@@ -22,8 +23,11 @@
             <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextBoxBase}">
                 <Setter Property="Margin" Value="0 0 0 7"/>
                 <Setter Property="VerticalContentAlignment" Value="Bottom"/>
-
             </Style>
+
+            <!--Déclaration des convertisseurs-->
+            <conv:BoolToBackgroundConverter x:Key="BoolToBackgroundConverter" />
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

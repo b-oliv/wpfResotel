@@ -18,7 +18,7 @@
             <RowDefinition Height="200"/>
         </Grid.RowDefinitions>
 
-        <Menu Background="#333534" Foreground="white" Margin="0,0,0,9" Grid.RowSpan="3">
+        <Menu Background="#333534" Foreground="white" Margin="0,0,0,9" Grid.RowSpan="3" HorizontalAlignment="Stretch">
             <MenuItem Background="#333535" Foreground="white">
                 <MenuItem.Header>
                     <StackPanel Orientation="Vertical">
@@ -74,6 +74,17 @@
             <DatePicker Foreground="white" Grid.Row="3" Grid.Column="2" SelectedDate="{Binding ReservationSelected.StartDate}"></DatePicker>
             <DatePicker Foreground="white" Grid.Row="4" Grid.Column="2" SelectedDate="{Binding ReservationSelected.EndDate}"></DatePicker>
 
+            <StackPanel Grid.Row="2" Grid.Column="1"  HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Center" Width="270">
+                <materialDesign:PackIcon Foreground="white" Kind="Search" />
+                <TextBlock Text="Rechercher: " Margin="5 0 0 0" Foreground="white" FontSize="18"/>
+                <TextBox
+                         Text="{Binding Search, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Margin="10 0 0 0"
+                         CharacterCasing="Upper" ToolTip="Recherche sur le nom de la réservation."
+                         Foreground="white" FontSize="13"
+                         Background="{Binding SearchNoMatch, Converter={StaticResource BoolToBackgroundConverter}}" Width="144"/>
+            </StackPanel>
+
             <StackPanel Orientation="Horizontal" Grid.Row="13" Grid.Column="2" HorizontalAlignment="Center" Margin="73,0,21,0" Width="230">
                 <Button Command="{Binding SaveCommand}" >
                     <StackPanel Orientation="Horizontal">
@@ -89,7 +100,5 @@
                 </Button>
             </StackPanel>
         </Grid>
-
-
     </Grid>
 </UserControl>

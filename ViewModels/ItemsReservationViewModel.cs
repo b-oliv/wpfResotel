@@ -140,7 +140,7 @@ namespace ProjetRESOTEL.ViewModels
             DialogHost.Show(new ucDialog());
         }
 
-        public void InsertReservation()
+        public async Task InsertReservation()
         {
             List<Client> listClient = ClientService.Instance.LoadClients();
             Client cl = new Client();
@@ -168,9 +168,8 @@ namespace ProjetRESOTEL.ViewModels
             reserv.AmountPaiement = 0;
             reserv.Name = cl.Lastname + " - " + cl.Firstname;
             reserv.DatePaiement = DateTime.Now;
-            //ReservationService.Instance.SaveReservation(reserv);
-            NotifyPropertyChanged("ItemSelected");
-            ((MainWindow)System.Windows.Application.Current.MainWindow).UpdateLayout();
+            ReservationService.Instance.SaveReservation(reserv);
+            InitItemsReservationPlanning();
         }
 
         private Bedroom GetRoom(int idBedrrom)
@@ -223,14 +222,13 @@ namespace ProjetRESOTEL.ViewModels
 
             _observer = CollectionViewSource.GetDefaultView(_itemsPlanning);
             _observer.CurrentChanged += OnSelectedItemChanged;
-            _observer.MoveCurrentToLast();
         }
 
 
 
         private void OnSelectedItemChanged(object sender, EventArgs e)
         {
-            NotifyPropertyChanged("ItemSelected");
+            NotifyPropertyChanged("ItemUpdated");
         }
 
         public ItemReservationViewModel ItemSelected

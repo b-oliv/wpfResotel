@@ -54,7 +54,6 @@
                         DialogTheme="Inherit">
             <materialDesign:DialogHost.DialogContent>
                 <StackPanel Margin="16">
-                    <TextBlock Text="Add a new fruit."/>
                     <TextBox Margin="0 8 0 0" HorizontalAlignment="Stretch" x:Name="Item"/>
                 </StackPanel>
             </materialDesign:DialogHost.DialogContent>

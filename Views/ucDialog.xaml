@@ -27,7 +27,7 @@
         <Label Grid.Row="2" Grid.Column="0" Margin="0 20 0 0" HorizontalAlignment="Left" FontWeight="Medium" FontSize="15" Foreground="{DynamicResource PrimaryHueDarkBrush}" Style="{DynamicResource MaterialDesignLabel}">Date de début:</Label>
         <Label Grid.Row="3" Grid.Column="0" Margin="0 20 0 0" HorizontalAlignment="Left" FontWeight="Medium" FontSize="15" Foreground="{DynamicResource PrimaryHueDarkBrush}" Style="{DynamicResource MaterialDesignLabel}">Date de fin:</Label>
 
-        <ComboBox Name="ClientSelected" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Client}" Tag="Val" DisplayMemberPath="Client" Style="{DynamicResource MaterialDesignFloatingHintComboBox}" />
+        <ComboBox Name="ClientSelected" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Client}"  DisplayMemberPath="Client" Style="{DynamicResource MaterialDesignFloatingHintComboBox}" />
         <DatePicker Grid.Row="2" Grid.Column="1" Text="{Binding selectedDate}" SelectedDate="{Binding selectedDate}" Style="{DynamicResource MaterialDesignFloatingHintDatePicker}" Margin="0 6 0 0" FontSize="18" />
         <DatePicker Grid.Row="3" Grid.Column="1" SelectedDate="{Binding endDate}" Text="cdc" Margin="0 6 0 0" FontSize="18"/>
         <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" Margin="0 16 0 0">

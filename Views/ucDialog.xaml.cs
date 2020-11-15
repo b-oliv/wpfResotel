@@ -32,8 +32,8 @@ namespace ProjetRESOTEL.Views
             ItemsReservationViewModel dc = DataContext as ItemsReservationViewModel;
             ClientViewModel clientSelected = ClientSelected.SelectedItem as ClientViewModel;
             dc.idClientSelected = clientSelected.Client.IdClient;
-            dc.InsertReservation();
-            MessageBox.Show("Réservation Enregistrée !!");
+
+            ucHome.RefreshHome();
         }
     }
 }

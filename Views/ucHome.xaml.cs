@@ -26,6 +26,7 @@ namespace ProjetRESOTEL.Views
 	/// </summary>
 	public partial class ucHome : UserControl
 	{
+		public static ucHome Instance { get; private set; }
 		ItemsReservationViewModel items;
 		public ucHome()
 		{
@@ -38,6 +39,7 @@ namespace ProjetRESOTEL.Views
 			items = DataContext as ItemsReservationViewModel;
 			CreateGridTemplate();
 			LoadData(items);
+			Instance = this;
 		}
 
 		private void CreateGridTemplate()
@@ -253,11 +255,20 @@ namespace ProjetRESOTEL.Views
 			LoadData(items);
 		}
 
-        private void btnNext_Click(object sender, RoutedEventArgs e)
+        public void btnNext_Click(object sender, RoutedEventArgs e)
         {
 			items.RefreshMoveToNext();
 			RefreshItemsGrid();
 			LoadData(items);
 		}
-    }
+
+		public static void RefreshHome()
+        {
+			ItemsReservationViewModel dc = Instance.DataContext as ItemsReservationViewModel;
+			dc.InsertReservation();
+			Instance.RefreshItemsGrid();
+			Instance.LoadData(dc);
+			//MessageBox.Show("Réservation Enregistrée !!");
+		}
+	}
 }

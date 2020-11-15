@@ -17,6 +17,8 @@ namespace ProjetRESOTEL.ViewModels
         private readonly ObservableCollection<ClientViewModel> _clients;
         private readonly ICollectionView _observer;
 
+        // Step 1 - Get data from service and linked to eventHandler
+        // step 2 - Define client selected(observervable collection)
         public ClientsViewModel()
         {
             List<Client> clients = ClientService.Instance.LoadClients();
@@ -35,17 +37,22 @@ namespace ProjetRESOTEL.ViewModels
             _observer.MoveCurrentToLast();
         }
 
+        // event linked to each clientViewModel
         private void Vm_EventSupprimer(object sender, EventArgs e)
         {
-            _clients.Remove(sender as ClientViewModel);
+            ClientService.Instance.DeleteClient(ClientSelected.Client);
+            MessageBox.Show("Client " + ClientSelected.Client.Lastname + " " + ClientSelected.Client.Firstname + "  supprimé !");
+            _clients.Remove(ClientSelected as ClientViewModel);
             NotifyPropertyChanged("Clients");
         }
 
+        // Notification of Property change - interface InotifyPropertyChange - Send new data to view
         private void OnSelectedClientChanged(object sender, EventArgs e)
         {
             NotifyPropertyChanged("ClientSelected");
         }
 
+        // Return the client selected in list
         public ClientViewModel ClientSelected
         {
             get
@@ -54,8 +61,8 @@ namespace ProjetRESOTEL.ViewModels
             }
         }
 
+        // Command interface (link to xaml) use RelayCommand for EventClick
         #region Edit
-        //Commande enregistrer
         public ICommand SaveCommand
         {
             get
@@ -67,35 +74,19 @@ namespace ProjetRESOTEL.ViewModels
         private void Edit()
         {
             ClientService.Instance.SaveClient(ClientSelected.Client);
-            MessageBox.Show("Client modifié !");
+            MessageBox.Show("Client " + ClientSelected.Client.Lastname + " " + ClientSelected.Client.Firstname + "  modifié !");
         }
 
         #endregion
 
-        #region Supprimer
-
-        //event de supression pour alerte la view modele parente
-        public event EventHandler EventSupprimer;
-
-        //Commande Supprimer
+        #region Delete
         public ICommand DeleteCommand
         {
             get
             {
-                //Comment supprimer cet élément ContactViewModel de la liste ListeContacts qui est dans ListeContactViewModels ?
-                return new RelayCommand(Delete);
+                return new RelayCommand(ClientSelected.Delete);
             }
         }
-
-        private void Delete()
-        {
-            if (ClientService.Instance.DeleteClient(ClientSelected.Client))
-            {
-                EventSupprimer?.Invoke(this, EventArgs.Empty);
-                MessageBox.Show("Client supprimé !");
-            }
-        }
-
         #endregion
     }
 }

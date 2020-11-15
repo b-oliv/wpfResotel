@@ -30,12 +30,21 @@ namespace ProjetRESOTEL.ViewModels
             foreach (Reservation reservation in lst)
             {
                 ReservationViewModel vm = new ReservationViewModel(reservation);
+                vm.EventDelete += Vm_DeleteSupprimer;
                 _reservations.Add(vm);
             }
 
             _observer = CollectionViewSource.GetDefaultView(_reservations);
             _observer.CurrentChanged += OnSelectedClientChanged;
             _observer.MoveCurrentToLast();
+        }
+
+        private void Vm_DeleteSupprimer(object sender, EventArgs e)
+        {
+            ReservationService.Instance.DeleteReservation(ReservationSelected.Reservation);
+            MessageBox.Show("Client " + ReservationSelected.Name + "  supprimé !");
+            _reservations.Remove(ReservationSelected as ReservationViewModel);
+            NotifyPropertyChanged("Reservations");
         }
 
         private void OnSelectedClientChanged(object sender, EventArgs e)
@@ -51,8 +60,10 @@ namespace ProjetRESOTEL.ViewModels
             }
         }
 
+
+
         #region Edit
-        //Commande enregistrer
+        // Command interface (link to xaml) use RelayCommand for EventClick
         public ICommand SaveCommand
         {
             get
@@ -64,36 +75,23 @@ namespace ProjetRESOTEL.ViewModels
         private void Edit()
         {
             ReservationService.Instance.SaveReservation(ReservationSelected.Reservation);
-            MessageBox.Show("Reservation enregistrée !");
+            MessageBox.Show("Reservation " + ReservationSelected.Name + "  modifié !");
+            NotifyPropertyChanged("ReservationSelected");
         }
 
         #endregion
 
-        #region Supprimer
-
-        //event de supression pour alerte la view modele parente
-        public event EventHandler EventSupprimer;
-
-        //Commande Supprimer
+        #region Delete
         public ICommand DeleteCommand
         {
             get
             {
-                //Comment supprimer cet élément ContactViewModel de la liste ListeContacts qui est dans ListeContactViewModels ?
-                return new RelayCommand(Delete);
+                return new RelayCommand(ReservationSelected.Delete);
             }
         }
-
-        private void Delete()
-        {
-            if (ReservationService.Instance.DeleteReservation(ReservationSelected.Reservation))
-            {
-                EventSupprimer?.Invoke(this, EventArgs.Empty);
-                MessageBox.Show("Reservation supprimé !");
-            }
-        }
-
         #endregion
+
+
 
         #region Recherche textuelle
 

@@ -28,7 +28,7 @@ namespace ProjetRESOTEL.ViewModels
             get { return client.Firstname; }
             set
             {
-                //empeche l'écrasement du nom
+                //empeche l'écrasement de la valeur
                 if (!string.IsNullOrWhiteSpace(value))
                 {
                     client.Firstname = value;
@@ -42,7 +42,6 @@ namespace ProjetRESOTEL.ViewModels
             get { return client.Lastname; }
             set
             {
-                //empeche l'écrasement du nom
                 if (!string.IsNullOrWhiteSpace(value))
                 {
                     client.Lastname = value;
@@ -56,7 +55,6 @@ namespace ProjetRESOTEL.ViewModels
             get { return client.Mail; }
             set
             {
-                //empeche l'écrasement du nom
                 if (!string.IsNullOrWhiteSpace(value))
                 {
                     client.Mail = value;
@@ -70,7 +68,6 @@ namespace ProjetRESOTEL.ViewModels
             get { return client.Adress; }
             set
             {
-                //empeche l'écrasement du nom
                 if (!string.IsNullOrWhiteSpace(value))
                 {
                     client.Adress = value;
@@ -84,18 +81,25 @@ namespace ProjetRESOTEL.ViewModels
             get { return client.Phone; }
             set
             {
-                //empeche l'écrasement du nom
-
                     client.Phone = value;
                     NotifyPropertyChanged();
-                
             }
         }
 
+        #region Delete client
+        public event EventHandler EventSupprimer;
+
+        public void Delete()
+        {
+            EventSupprimer?.Invoke(this, EventArgs.Empty);
+        }
+        #endregion
+
+
         #region Save client
 
-        //Commande enregistrer
-        public ICommand SaveCommand
+        //Commande to add client - command to xaml newClient
+        public ICommand AddCommand
         {
             get
             {
@@ -103,15 +107,13 @@ namespace ProjetRESOTEL.ViewModels
             }
         }
 
-        public Action<object, EventArgs> EventSupprimer { get; internal set; }
-
         private void Save()
         {
             ClientService.Instance.SaveClient(client);
-            MessageBox.Show("Client ajouté !");
-            
+            MessageBox.Show("Client " + client.Lastname + " " +  client.Lastname + " ajouté !");
         }
 
+        //Check if this property is reachable for command relay
         private bool CanSave()
         {
             if (string.IsNullOrWhiteSpace(client.Firstname))

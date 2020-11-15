@@ -67,8 +67,8 @@
             <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="4" Grid.Column="1" Text="Adresse" FontSize="15"/>
             <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="5" Grid.Column="1" Text="Téléphone" FontSize="15"/>
 
-            <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding ClientSelected.Firstname}" VerticalContentAlignment="Bottom" FontSize="13" />
-            <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding ClientSelected.Lastname}" FontSize="13" />
+            <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding ClientSelected.Lastname}" VerticalContentAlignment="Bottom" FontSize="13" />
+            <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding ClientSelected.Firstname}" FontSize="13" />
             <TextBox Grid.Row="3" Grid.Column="2" Text="{Binding ClientSelected.Mail}" FontSize="13" />
             <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding ClientSelected.Adress}" FontSize="13" />
             <TextBox Grid.Row="5" Grid.Column="2" Text="{Binding ClientSelected.Phone}" FontSize="13" />

@@ -28,7 +28,7 @@ namespace ProjetRESOTEL.Entities
         
         [StringLength(80)]
         public string Adress { get; set; }
-
+        public object EventSupprimer { get; internal set; }
 
         public override string ToString()
         {

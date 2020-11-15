@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace ProjetRESOTEL.ViewModels
 {
@@ -92,6 +93,19 @@ namespace ProjetRESOTEL.ViewModels
         {
             get { return ReservationService.Instance.Lastname(_reservation.IdReservation); }
         }
+
+        #region Delete
+
+        //event de supression pour alerte la view modele parente
+        public event EventHandler EventDelete;
+
+        public void Delete()
+        {
+            EventDelete?.Invoke(this, EventArgs.Empty);
+        }
+
+        #endregion
+
 
     }
 }

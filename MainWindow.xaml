@@ -81,7 +81,7 @@
                     </StackPanel>
                 </MenuItem.Header>
             </MenuItem>
-            <MenuItem>
+            <MenuItem x:Name="CheckCleanChamber" Click="OnCheckCleanChamber">
                 <MenuItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="EventNote" />

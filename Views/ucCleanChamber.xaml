@@ -8,24 +8,14 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="130*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="31*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="1" Text="Liste des réservations" />
+        <Rectangle Grid.Row="1" Grid.Column="0" Fill="#333535" />
 
-
-        <DataGrid Grid.Row="2" ItemsSource="{Binding Bedroom}" AutoGenerateColumns="False" CanUserResizeColumns="True" Margin="0,0,0,-394">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Numéro Chambre" Binding="{Binding IdBedroom}" />
-                <DataGridTextColumn Header="Etage" Binding="{Binding FloorNumber}" />
-                <DataGridTextColumn Header="Etat" Binding="{Binding IsDirty}" />
-            </DataGrid.Columns>
-        </DataGrid>
-
+        <TextBlock Grid.Row="1" Grid.Column="2"  Foreground="White" Text="Functionality CleanRoom - Not implemented yet" FontSize="14" TextAlignment="Center" VerticalAlignment="Center" Margin="5 0 0 0"/>
     </Grid>
 </UserControl>

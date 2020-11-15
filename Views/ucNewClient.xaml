@@ -11,45 +11,60 @@
              xmlns:local="clr-namespace:ProjetRESOTEL.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="20*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
+        
+        <materialDesign:Card Grid.Column="1" Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
 
-        <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="1" Grid.Column="1" Text="Nom" FontSize="15" />
-        <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="2" Grid.Column="1" Text="Prénom" FontSize="15"/>
-        <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="3" Grid.Column="1" Text="Téléphone" FontSize="15"/>
-        <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="4" Grid.Column="1" Text="E-mail" FontSize="15"/>
-        <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="5" Grid.Column="1" Text="Adresse" FontSize="15" />
+                <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="0" Grid.Column="2" Text="Ajouter un nouveau client" VerticalAlignment="Top" Margin="0 100 0 0"  FontSize="32" />
+                <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="1" Grid.Column="1" Text="Nom" FontSize="15" />
+                <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="2" Grid.Column="1" Text="Prénom" FontSize="15"/>
+                <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="3" Grid.Column="1" Text="Téléphone" FontSize="15"/>
+                <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="4" Grid.Column="1" Text="E-mail" FontSize="15"/>
+                <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="5" Grid.Column="1" Text="Adresse" FontSize="15" />
 
-        <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Client.Firstname}" VerticalContentAlignment="Bottom" FontSize="13" />
-        <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Client.Lastname}" FontSize="13"/>
-        <TextBox Grid.Row="3" Grid.Column="2" Text="{Binding Client.Phone}" FontSize="13"/>
-        <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding Client.Mail}" FontSize="13"/>
-        <TextBox Grid.Row="5" Grid.Column="2" Text="{Binding Client.Adress}" FontSize="13"/>
+                <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Client.Firstname}" VerticalContentAlignment="Bottom" FontSize="13" />
+                <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Client.Lastname}" FontSize="13"/>
+                <TextBox Grid.Row="3" Grid.Column="2" Text="{Binding Client.Phone}" FontSize="13"/>
+                <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding Client.Mail}" FontSize="13"/>
+                <TextBox Grid.Row="5" Grid.Column="2" Text="{Binding Client.Adress}" FontSize="13"/>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="10" Grid.Column="2" HorizontalAlignment="Center">
-            <Button Command="{Binding AddCommand}">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="ContentSave" />
-                    <TextBlock Text="Créer un client" Margin="5 0 0 0" />
+                <StackPanel Orientation="Horizontal" Grid.Row="10" Grid.Column="2" HorizontalAlignment="Center">
+                    <Button Command="{Binding AddCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ContentSave" />
+                            <TextBlock Text="Créer un client" Margin="5 0 0 0" />
+                        </StackPanel>
+                    </Button>
                 </StackPanel>
-            </Button>
-
-
-        </StackPanel>
+            </Grid>
+        </materialDesign:Card>
     </Grid>
 </UserControl>

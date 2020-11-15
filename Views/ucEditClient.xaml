@@ -14,79 +14,83 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="15*" />
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="50*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <ListBox Grid.Row="0" Grid.Column="0" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Stretch"
+        <ListBox Grid.Row="0" Grid.Column="0" IsSynchronizedWithCurrentItem="True" Background="#333535" HorizontalAlignment="Stretch"
                  ItemsSource="{Binding Clients}" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="BriefcaseAccountOutline" />
-                        <materialDesign:PackIcon Kind="AccountHeartOutline" />
-                        <TextBlock Text="{Binding Firstname}" Margin="5 0 0 0" />
-                        <TextBlock Text="{Binding Lastname}" Margin="5 0 0 0" />
+                        <materialDesign:PackIcon  Foreground="white"  Kind="BriefcaseAccountOutline" />
+                        <TextBlock Foreground="white"  Text="{Binding Firstname}" Margin="5 0 0 0" />
+                        <TextBlock  Foreground="white"  Text="{Binding Lastname}" Margin="5 0 0 0" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <GridSplitter Grid.Row="1" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                      Background="Gray" Width="3" Grid.RowSpan="3" />
+        <GridSplitter Grid.Row="0" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Gray" Width="3" />
 
 
-        <Grid  Grid.Row="0" Grid.Column="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="120"/>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
 
-            <TextBlock Style="{DynamicResource StyleLabel}" Margin="10 20 0 20" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="2" Text="Edition Client" FontSize="30" />
+
+        <materialDesign:Card  Grid.Row="0" Grid.Column="2">
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Style="{DynamicResource StyleLabel}" Margin="10 20 0 20" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="2" Text="Edition Client" FontSize="30" />
+
+                <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="1" Grid.Column="1" Text="Nom" FontSize="15" />
+                <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="2" Grid.Column="1" Text="Prénom" FontSize="15" />
+                <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="3" Grid.Column="1" Text="E-mail" FontSize="15"/>
+                <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="4" Grid.Column="1" Text="Adresse" FontSize="15"/>
+                <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="5" Grid.Column="1" Text="Téléphone" FontSize="15"/>
+
+                <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding ClientSelected.Lastname}" VerticalContentAlignment="Bottom" FontSize="13" />
+                <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding ClientSelected.Firstname}" FontSize="13" />
+                <TextBox Grid.Row="3" Grid.Column="2" Text="{Binding ClientSelected.Mail}" FontSize="13" />
+                <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding ClientSelected.Adress}" FontSize="13" />
+                <TextBox Grid.Row="5" Grid.Column="2" Text="{Binding ClientSelected.Phone}" FontSize="13" />
+
+                <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button Command="{Binding SaveCommand}" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Edit" />
+                            <TextBlock Text="Editer" Margin="5 0 0 0" />
+                        </StackPanel>
+                    </Button>
+                    <Button Margin="20 20 0 20" Command="{Binding DeleteCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Delete" />
+                            <TextBlock Text="Supprimer" Margin="5 0 0 0" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
             
-            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="1" Grid.Column="1" Text="Nom" FontSize="15" />
-            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="2" Grid.Column="1" Text="Prénom" FontSize="15" />
-            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="3" Grid.Column="1" Text="E-mail" FontSize="15"/>
-            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="4" Grid.Column="1" Text="Adresse" FontSize="15"/>
-            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="5" Grid.Column="1" Text="Téléphone" FontSize="15"/>
 
-            <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding ClientSelected.Lastname}" VerticalContentAlignment="Bottom" FontSize="13" />
-            <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding ClientSelected.Firstname}" FontSize="13" />
-            <TextBox Grid.Row="3" Grid.Column="2" Text="{Binding ClientSelected.Mail}" FontSize="13" />
-            <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding ClientSelected.Adress}" FontSize="13" />
-            <TextBox Grid.Row="5" Grid.Column="2" Text="{Binding ClientSelected.Phone}" FontSize="13" />
-
-            <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Center">
-                <Button Command="{Binding SaveCommand}" >
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Edit" />
-                        <TextBlock Text="Editer" Margin="5 0 0 0" />
-                    </StackPanel>
-                </Button>
-                <Button Margin="20 20 0 20" Command="{Binding DeleteCommand}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Delete" />
-                        <TextBlock Text="Supprimer" Margin="5 0 0 0" />
-                    </StackPanel>
-                </Button>
-            </StackPanel>
-        </Grid>
     </Grid>
 </UserControl>

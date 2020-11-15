@@ -40,6 +40,11 @@ namespace ProjetRESOTEL
             NavigateToCheckFoodWindow();
         }
 
+        private void OnCheckCleanChamber(object sender, RoutedEventArgs e)
+        {
+            NavigateToCheckCleanChamberWindow();
+        }
+
         private void Display(UserControl userControl)
         {
             MainTab.Items.Clear();
@@ -71,6 +76,11 @@ namespace ProjetRESOTEL
         private void NavigateToCheckFoodWindow()
         {
             Display(new ucCheckFood());
+        }
+
+        private void NavigateToCheckCleanChamberWindow()
+        {
+            Display(new ucCleanChamber());
         }
     }
 }

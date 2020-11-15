@@ -13,54 +13,14 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="130"/>
-            <ColumnDefinition Width="170*"/>
-            <ColumnDefinition Width="222*"/>
-            <ColumnDefinition Width="170*"/>
             <ColumnDefinition Width="130*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
             <RowDefinition Height="31*"/>
-            <RowDefinition Height="106*"/>
-            <RowDefinition Height="37*"/>
-            <RowDefinition Height="37*"/>
-            <RowDefinition Height="37*"/>
-            <RowDefinition Height="38*"/>
-            <RowDefinition Height="163*"/>
         </Grid.RowDefinitions>
 
-        <Rectangle Grid.Row="1" Grid.Column="0" Fill="LightGreen" />
-        <Rectangle Grid.Row="1" Grid.Column="1" Fill="LightGreen" Grid.ColumnSpan="2" Margin="0,0,214,0" />
-        <Rectangle Grid.Row="1" Grid.Column="2" Fill="LightGreen" Grid.ColumnSpan="2" Margin="1,0,164,0" />
-        <Rectangle Grid.Row="1" Grid.Column="3" Fill="LightGreen" Margin="1,0,0,0" />
-        <Rectangle Grid.Row="1" Grid.Column="4" Fill="LightGreen" />
+        <Rectangle Grid.Row="1" Grid.Column="0" Fill="#333535" />
 
-        <TextBlock Grid.Row="1" Grid.Column="2" Text="Status of breakfast and dinner reservations" FontSize="14" TextAlignment="Center" Margin="5 0 0 0"/>
-        
-        <TextBlock Grid.Row="3" Grid.Column="1" Text="Date" FontSize="13" TextAlignment="Center"/>
-        <TextBlock Grid.Row="3" Grid.Column="2" Text="Breakfast" FontSize="13" TextAlignment="Center"/>
-        <TextBlock Grid.Row="3" Grid.Column="3" Text="Dinner" FontSize="13" TextAlignment="Center"/>
-        
-
-        <ListBox Grid.Row="4" Grid.Column="2" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Stretch"
-                 ItemsSource="{Binding ListBreakfast}" >
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                        </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-            <ListBox Grid.Row="4" Grid.Column="3" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Stretch"
-                 ItemsSource="{Binding ListDinner}" >
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-
+        <TextBlock Grid.Row="1" Grid.Column="2"  Foreground="White" Text="Functionality CheckFood -  Not implemented yet" FontSize="14" TextAlignment="Center" VerticalAlignment="Center" Margin="5 0 0 0"/>
     </Grid>
 </UserControl>

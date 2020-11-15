@@ -18,7 +18,7 @@
             <RowDefinition Height="200"/>
         </Grid.RowDefinitions>
 
-        <Menu Background="#333535" Foreground="white" Margin="0,0,0,9" Grid.RowSpan="3">
+        <Menu Background="#333534" Foreground="white" Margin="0,0,0,9" Grid.RowSpan="3">
             <MenuItem Background="#333535" Foreground="white">
                 <MenuItem.Header>
                     <StackPanel Orientation="Vertical">
@@ -29,34 +29,31 @@
             </MenuItem>
         </Menu>
 
-        <ListBox Grid.Row="2" Grid.Column="0" Grid.RowSpan="3" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Stretch"
-                 ItemsSource="{Binding Reservations}" >
+        <ListBox Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Stretch"
+                 ItemsSource="{Binding Reservations}" Background="#ADADAD" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="BriefcaseAccountOutline" />
-                        <materialDesign:PackIcon Kind="AccountHeartOutline" />
-                        <TextBlock Text="{Binding RoomNumber}" Margin="5 0 0 0" />
+                        <TextBlock Text="{Binding RoomNumber}" Margin="15 0 0 0" />
+                        <TextBlock Text="{Binding TypeBedroom}" Margin="5 0 0 0" />
+                        <materialDesign:PackIcon Kind="AccountHeartOutline" Margin="10 0 0 0"/>
                         <TextBlock Text="{Binding Firstname}" Margin="5 0 0 0" />
                         <TextBlock Text="{Binding Lastname}" Margin="5 0 0 0" />
 
-                        <TextBlock Text="{Binding StartDate}" Margin="5 0 0 0" />
-                        <TextBlock Text="{Binding EndDate}" Margin="5 0 0 0" />
-                        <TextBlock Text="{Binding TypeBedroom}" Margin="5 0 0 0" />
+                        <TextBlock Text="{Binding StartDate}" Margin="10 0 0 0" />
+                        <TextBlock Text="{Binding EndDate}" Margin="10 0 0 0" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <Grid Grid.Row="4" Grid.Column="3">
+        <Grid Grid.Row="4" Grid.Column="3" Background="#333534" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="140"/>
-                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="324"/>
-                <ColumnDefinition Width="62"/>
-
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -69,17 +66,15 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="2" Grid.Column="1" Text="Nom de la réservation" FontSize="13" Margin="0,0,0,5" Height="20" />
-            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="3" Grid.Column="1" Text="Date de début" FontSize="13" Margin="0,0,0,5" Height="20" />
-            <TextBlock Style="{DynamicResource StyleLabel}" Grid.Row="4" Grid.Column="1" Text="Date de fin" FontSize="13" Margin="0,0,0,5" Height="20"/>
+            <TextBlock HorizontalAlignment="Right" Foreground="white" Style="{DynamicResource StyleLabel}" Grid.Row="2" Grid.Column="1" Text="Nom de la réservation" FontSize="13" Margin="0,0,30,5" Height="20" />
+            <TextBlock HorizontalAlignment="Right" Foreground="white" Style="{DynamicResource StyleLabel}" Grid.Row="3" Grid.Column="1" Text="Date de début" FontSize="13" Margin="0,0,30,5" Height="20" />
+            <TextBlock HorizontalAlignment="Right" Foreground="white" Style="{DynamicResource StyleLabel}" Grid.Row="4" Grid.Column="1" Text="Date de fin" FontSize="13" Margin="0,0,30,5" Height="20"/>
 
+            <TextBox Foreground="white" Grid.Row="2" Grid.Column="2" Text="{Binding ReservationSelected.Name}" VerticalContentAlignment="Bottom" FontSize="13" />
+            <DatePicker Foreground="white" Grid.Row="3" Grid.Column="2" SelectedDate="{Binding ReservationSelected.StartDate}"></DatePicker>
+            <DatePicker Foreground="white" Grid.Row="4" Grid.Column="2" SelectedDate="{Binding ReservationSelected.EndDate}"></DatePicker>
 
-            <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding ReservationSelected.Name}" Margin="10,0,0,0" VerticalContentAlignment="Bottom" FontSize="13" />
- 
-            <DatePicker Grid.Row="3" Grid.Column="2" SelectedDate="{Binding ReservationSelected.StartDate}"></DatePicker>
-            <DatePicker Grid.Row="4" Grid.Column="2" SelectedDate="{Binding ReservationSelected.EndDate}"></DatePicker>
-
-            <StackPanel Orientation="Horizontal" Grid.Row="13" Grid.Column="4" HorizontalAlignment="Center" Margin="73,0,21,0" Width="230">
+            <StackPanel Orientation="Horizontal" Grid.Row="13" Grid.Column="2" HorizontalAlignment="Center" Margin="73,0,21,0" Width="230">
                 <Button Command="{Binding SaveCommand}" >
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Edit" />

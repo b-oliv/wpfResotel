@@ -102,20 +102,18 @@ namespace ProjetRESOTEL.Service
 
         public string RoomNumber(int idReservation)
         {
-
-            String roomnumber = "NA";
+ 
+            String roomnumber = "☻";
 
             using (ResotelContext context = new ResotelContext())
             {
-
                 var query = (from reservation in context.Reservation
-                             join type in context.Bedroom on reservation.IdBedroom equals type.IdBedroom
+                             join bedroom in context.Bedroom on reservation.IdBedroom equals bedroom.IdBedroom
                              where reservation.IdReservation == idReservation
-                             select type).First();
-
-                roomnumber = query.RoomNumber.ToString();
+                             select bedroom).First();
+                if (query != null)
+                    roomnumber = query.RoomNumber.ToString();
             }
-
             return roomnumber;
         }
 

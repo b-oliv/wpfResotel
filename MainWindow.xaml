@@ -64,14 +64,6 @@
                         <TextBlock Text="Réservations" Margin="5 0 0 0"/>
                     </StackPanel>
                 </MenuItem.Header>
-                <MenuItem x:Name="NewReservationButton" Click="OnNewReservationButtonClick">
-                    <MenuItem.Header>
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="AddBox" />
-                            <TextBlock Text="Nouvelle réservation" Margin="5 0 0 0"/>
-                        </StackPanel>
-                    </MenuItem.Header>
-                </MenuItem>
                 <MenuItem x:Name="ReservationListButton" Click="OnReservationListButtonClick">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">

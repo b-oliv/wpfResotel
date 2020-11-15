@@ -30,11 +30,6 @@ namespace ProjetRESOTEL
             NavigateToEditClientWindow();
         }
 
-        private void OnNewReservationButtonClick(object sender, RoutedEventArgs e)
-        {
-            NavigateToNewReservationWindow();
-        }
-
         private void OnReservationListButtonClick(object sender, RoutedEventArgs e)
         {
             NavigateToReservationListWindow();
@@ -66,11 +61,6 @@ namespace ProjetRESOTEL
         {
             Display(new ucEditClient());
             this.DataContext = new ClientsViewModel().ClientSelected;
-        }
-
-        private void NavigateToNewReservationWindow()
-        {
-            Display(new ucNewReservation());
         }
 
         private void NavigateToReservationListWindow()

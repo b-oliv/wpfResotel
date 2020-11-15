@@ -146,9 +146,6 @@
     <Compile Include="Views\ucListReservation.xaml.cs">
       <DependentUpon>ucListReservation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ucNewReservation.xaml.cs">
-      <DependentUpon>ucNewReservation.xaml</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -190,10 +187,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ucListReservation.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ucNewReservation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

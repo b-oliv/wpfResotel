@@ -80,7 +80,7 @@ namespace ProjetRESOTEL.ViewModels
 
         public string RoomNumber
         {
-            get { return ReservationService.Instance.RoomNumber(_reservation.IdBedroom); }
+            get { return ReservationService.Instance.RoomNumber(_reservation.IdReservation); }
         }
 
         public string Firstname

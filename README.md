@@ -21,7 +21,7 @@ L'application doit pouvoir gérer toutes les réservations clientes avec toutes 
 
 - Affichage de la partie restauration
 - Affichage des chambres qui doivent être nettoyées
-- Reservation incluant le prix et les options
+- Réservation incluant le prix et les options
 - Un export de la facture client
 
 ## Installation de la solution

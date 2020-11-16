@@ -13,9 +13,9 @@ L'application doit pouvoir gérer toutes les réservations clientes avec toutes 
 - Système d'authentification avec gestion des rôles
 - Planning de réservation affichant les chambres disponibles et réservées 
 - Pagination du planning (Programmation réactive)
-- Reservation à partir de ce planning avec une Modal (Programmation réactive)
+- Réservation à partir de ce planning avec une Modal (Programmation réactive)
 - CRUD Client (Programmation réactive)
-- Histotique des réservations : édition / suppression et recherche par client (Converter / Programmation réactive)
+- Historique des réservations : édition / suppression et recherche par client (Converter / Programmation réactive)
 
 ## Fonctionnalités non implémentées (20%)
 
@@ -35,7 +35,7 @@ L'application est configurée sur le port "3306" sur une base de données MySQL.
 - Nom de la base de données : "resotel".
 - Login/Password : contactez l'administrateur (présent dans le zip dropbox)
 
-Veulilez aussi importer le script sql que nous avons envoyé dans le dropbox.
+Veuillez aussi importer le script sql que nous avons envoyé dans le dropbox.
 
 
 ### Application

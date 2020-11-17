@@ -31,6 +31,44 @@ namespace ProjetRESOTEL.ViewModels
         private DateTime _endDate;
         private string _roomNumber;
         public int idClientSelected;
+        //la liste des contacts via leur vue-modèle de représentation
+        private readonly ObservableCollection<ClientViewModel> clients;
+        public ObservableCollection<ClientViewModel> Client
+        {
+            get
+            {
+                return clients;
+            }
+        }
+
+        //observateur de la liste observable
+        private readonly ICollectionView observer;
+        public int pagination = 1;
+        public int numberOfItems = 7;
+
+        public ItemsReservationViewModel()
+        {
+            currentDate = DateTime.Now;
+
+            //load clients
+            List<Client> listClient = ClientService.Instance.LoadClients();
+
+            //créé la liste des viewsmodeles pour chaque entité
+            clients = new ObservableCollection<ClientViewModel>();
+            foreach (Client person in listClient)
+            {
+                ClientViewModel vm = new ClientViewModel(person);
+                clients.Add(vm);
+            }
+
+            //lier l'observer à la liste
+            observer = CollectionViewSource.GetDefaultView(listClient);
+
+            observer.MoveCurrentToLast();
+
+            InitItemsReservationPlanning();
+        }
+
         public DateTime currentDate
         {
             get
@@ -82,45 +120,9 @@ namespace ProjetRESOTEL.ViewModels
                 _roomNumber = value;
                 NotifyPropertyChanged("roomNumber");
             }
-        }
+        } 
 
-        //la liste des contacts via leur vue-modèle de représentation
-        private readonly ObservableCollection<ClientViewModel> clients;
-        public ObservableCollection<ClientViewModel> Client
-        {
-            get
-            {
-                return clients;
-            }
-        }
-
-        //observateur de la liste observable
-        private readonly ICollectionView observer;
-        public int pagination = 1;
-        public int numberOfItems = 7;
-
-        public ItemsReservationViewModel()
-        {
-            currentDate = DateTime.Now;
-
-            //load clients
-            List<Client> listClient = ClientService.Instance.LoadClients();
-
-            //créé la liste des viewsmodeles pour chaque entité
-            clients = new ObservableCollection<ClientViewModel>();
-            foreach (Client person in listClient)
-            {
-                ClientViewModel vm = new ClientViewModel(person);
-                clients.Add(vm);
-            }
-
-            //lier l'observer à la liste
-            observer = CollectionViewSource.GetDefaultView(listClient);
-
-            observer.MoveCurrentToLast();
-
-            InitItemsReservationPlanning();
-        }
+       
 
         public void RefreshMoveToNext()
         {

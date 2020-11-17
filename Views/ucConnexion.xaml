@@ -47,7 +47,7 @@
         </Rectangle>
         <materialDesign:PackIcon Kind="Hotel" Height="Auto" Grid.RowSpan="2" Width="119" Margin="223,10,0,61" Foreground="White" VerticalAlignment="Stretch" Grid.Row="1"/>
         <TextBlock Text="Projet RESOTEL" FontSize="40" Foreground="White" Grid.ColumnSpan="1" Margin="137,34,61,0" Grid.Row="2"/>
-        <TextBlock Text="OLIVEIRA CARRERE MARTIN - 2020" FontSize="12" Foreground="White" Grid.ColumnSpan="2" Margin="10,69,374,-19" Grid.Row="4"/>
+        <TextBlock Text="OLIVEIRA CARRERE - 2020" FontSize="12" Foreground="White" Grid.ColumnSpan="2" Margin="10,69,374,-19" Grid.Row="4"/>
         <TextBlock Text="Espace de connexion" FontSize="30"  HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Gray" Margin="74,0,36,0" Height="54" Width="318" Grid.Column="1" Grid.Row="1" />
         <Grid Width="280" Height="240" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>

@@ -31,10 +31,5 @@ namespace ProjetRESOTEL.Views
             window.Show();
             this.Close();
         }
-
-
-
-
-
     }
 }

@@ -6,7 +6,7 @@
 ## Contexte
 
 Le projet consiste en un client « Desktop » qui est développé en WPF/MVVM. La base de données est partagée entre les différents postes de l’hôtel sur le LAN local. 
-L'application doit pouvoir gérer toutes les réservations clientes avec toutes les options à disposition, et afficher un planning et un tableau de bord général permettant d’un seul coup d’œil de visualiser les chambres disponibles pour une date précise, ainsi qu'un historique de réservation de chaque client. 
+L'application doit pouvoir gérer toutes les réservations clientes avec toutes les options à disposition et afficher un planning. Un tableau de bord général permettant d’un seul coup d’œil de visualiser les chambres disponibles pour une date précise, ainsi qu'un historique de réservation de chaque client. 
 
 ## Fonctionnalités (80%)
 
@@ -16,11 +16,11 @@ L'application doit pouvoir gérer toutes les réservations clientes avec toutes 
 - Réservation à partir de ce planning avec une Modal (Programmation réactive)
 - CRUD Client (Programmation réactive)
 - Historique des réservations : édition / suppression et recherche par client (Converter / Programmation réactive)
+- Affichage des chambres qui doivent être nettoyées
 
 ## Fonctionnalités non implémentées (20%)
 
 - Affichage de la partie restauration
-- Affichage des chambres qui doivent être nettoyées
 - Réservation incluant le prix et les options
 - Un export de la facture client
 

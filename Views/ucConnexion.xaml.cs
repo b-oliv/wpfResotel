@@ -22,6 +22,8 @@ namespace ProjetRESOTEL.Views
 
     public partial class ucConnexion : Window
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public ucConnexion()
         {
             InitializeComponent();
@@ -39,7 +41,7 @@ namespace ProjetRESOTEL.Views
             {
                 
                 Application.Current.Properties["role"] = users.uRole;
-                MessageBox.Show("Vous êtes bien connecté !");
+                log.Info("L'utilisateur connecté " + users.uName);
                 MainWindow window = new MainWindow();
                 window.Show();
                 this.Close();
@@ -48,6 +50,7 @@ namespace ProjetRESOTEL.Views
             else
             {
                 MessageBox.Show("Login ou Mot de passe incorrect!");
+                log.Error("Erreur de connexion");
             }
 
         }

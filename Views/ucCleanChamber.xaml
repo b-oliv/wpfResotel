@@ -11,23 +11,29 @@
             <ColumnDefinition Width="130*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="31*"/>
         </Grid.RowDefinitions>
 
-        <ListBox Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Stretch"
-                 ItemsSource="{Binding Bedrooms}" Background="#ADADAD" >
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Check list du nettoyage:" FontSize="18"  HorizontalAlignment="Center" Margin="15 10 0 0" />
+        <ListBox Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Center"
+                 ItemsSource="{Binding Bedrooms}"  >
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="BriefcaseAccountOutline" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Kind="BriefcaseAccountOutline" FontSize="18" Margin="15 10 0 0"/>
                         
-                        <TextBlock Text="{Binding RoomNumber}" Margin="15 0 0 0" />
+                        <TextBlock Text="{Binding RoomNumber}" FontSize="18" Margin="15 10 0 0" />
 
-                        <TextBlock Text="{Binding DateClean}" Margin="10 0 0 0" />
+                        <TextBlock Text="{Binding DateClean}"  Margin="10 10 0 0" VerticalAlignment="Center" />
+
+                        <Button Command="{Binding AddCommand}" Foreground="White" Content="Clean" Margin="20 0 0 0"/>
 
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        
+        
     </Grid>
 </UserControl>

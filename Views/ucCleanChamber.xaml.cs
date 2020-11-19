@@ -23,7 +23,7 @@ namespace ProjetRESOTEL.Views
         public ucCleanChamber()
         {
             InitializeComponent();
-            DataContext = new ViewModels.BedroomsViewModel();
+            DataContext = new ViewModels.CleansViewModel();
         }
     }
 }

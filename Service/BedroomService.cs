@@ -43,6 +43,23 @@ namespace ProjetRESOTEL.Service
             return bedrooms;
         }
 
+        public List<Bedroom> LoadNoCleanBedrooms()
+        {
+            List<Bedroom> bedrooms = new List<Bedroom>();
+            DateTime date = DateTime.Now.AddDays(-1);
+
+            using (ResotelContext context = new ResotelContext())
+            {
+                var query = (from bedroom in context.Bedroom
+                             where bedroom.DateClean <= date
+                             select bedroom).ToList<Bedroom>();
+
+                bedrooms = query;
+            }
+
+            return bedrooms;
+        }
+
 
         public string TypeOfRoom(int idBedroom)
         {

@@ -38,8 +38,7 @@ namespace ProjetRESOTEL.ViewModels
 
         private void Vm_EventSupprimer(object sender, EventArgs e)
         {
-            //ClientService.Instance.DeleteClient(ClientSelected.Client);
-            //MessageBox.Show("Client " + ClientSelected.Client.Lastname + " " + ClientSelected.Client.Firstname + "  supprimé !");
+            BedroomService.Instance.UpdateCleanBedroom(BedroomSelected.Bedroom);
             _bedrooms.Remove(BedroomSelected as CleanViewModel);
             NotifyPropertyChanged("Bedrooms");
         }

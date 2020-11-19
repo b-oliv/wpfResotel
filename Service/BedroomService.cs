@@ -2,6 +2,7 @@
 using ProjetRESOTEL.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,6 +59,24 @@ namespace ProjetRESOTEL.Service
             }
 
             return bedrooms;
+        }
+
+        public bool UpdateCleanBedroom(Bedroom bedroom)
+        {
+            bedroom.DateClean = DateTime.Now;
+            using (ResotelContext context = new ResotelContext())
+            {
+                if (bedroom.IdBedroom > 0)
+                {
+                    //on l'attache au contexte pour la mettre à jour
+                    context.Bedroom.Attach(bedroom);
+                    //et on met son statut à modifié
+                    context.Entry(bedroom).State = EntityState.Modified;
+                }
+                //répercute les changements en base
+                context.SaveChanges();
+            }
+            return true;
         }
 
 

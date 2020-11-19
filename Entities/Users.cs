@@ -8,16 +8,15 @@ using System.Threading.Tasks;
 
 namespace ProjetRESOTEL.Entities
 {
-    [Table("typebedroom")]
-    class Typebedroom
+    [Table("users")]
+    class Users
     {
         [Key]
-        public int IdTypeBedroom { get; set; }
-        public string Name { get; set; }
-        public int Price { get; set; }
-        public int Capacity { get; set; }
-        public int HasBaby { get; set; }
+        public int idUsers { get; set; }
+        public string uName { get; set; }
+        public string uPassword { get; set; }
+        public string uRole { get; set; }
+
     }
+
 }
-
-

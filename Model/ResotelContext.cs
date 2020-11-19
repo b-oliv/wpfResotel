@@ -24,5 +24,7 @@ namespace ProjetRESOTEL.Model
 
         public DbSet<Typebedroom> Typebedroom { get; set; }
 
+        public DbSet<Users> Users { get; set; }
+
     }
 }

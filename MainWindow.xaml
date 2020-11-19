@@ -91,6 +91,10 @@
             </MenuItem>
         </Menu>
 
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Click="btnDisconnect_Click" x:Name="btnDisconnect" Foreground="White" Margin="450 0 15 0" Width="100" FontSize="11">Déconnexion</Button>
+        </StackPanel>
+
         <TabControl x:Name="MainTab" Grid.Row="1" Grid.RowSpan="3" Grid.Column="3" Background="Transparent"  BorderBrush="Transparent"></TabControl>  
     </Grid>
 </Window>

@@ -110,7 +110,7 @@ namespace ProjetRESOTEL.ViewModels
         private void Save()
         {
             ClientService.Instance.SaveClient(client);
-            MessageBox.Show("Client " + client.Lastname + " " +  client.Lastname + " ajouté !");
+            MessageBox.Show("Client " + client.Firstname + " " +  client.Lastname + " ajouté !");
         }
 
         //Check if this property is reachable for command relay

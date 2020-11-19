@@ -45,6 +45,14 @@ namespace ProjetRESOTEL
             NavigateToCheckCleanChamberWindow();
         }
 
+        private void btnDisconnect_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Vous êtes bien déconnecté !");
+            ucConnexion window = new ucConnexion();
+            window.Show();
+            this.Close();
+        }
+
         private void Display(UserControl userControl)
         {
             MainTab.Items.Clear();

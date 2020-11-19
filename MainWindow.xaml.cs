@@ -10,11 +10,54 @@ namespace ProjetRESOTEL
     /// </summary>
     public partial class MainWindow : Window
     {
+        //l'entité du modèle
+        private readonly string _role;
+        
+
         public MainWindow()
         {
+            this._role = (string)Application.Current.Properties["role"];
             InitializeComponent();
-            MainTab.Items.Add(new TabItem { Content = new ucHome() });
+            DefineHomePage();
+            CheckRole();
         }
+
+        private void DefineHomePage()
+        {
+            if (this._role == "Admin")
+            {
+                MainTab.Items.Add(new TabItem { Content = new ucHome() });
+            }
+            else
+            {
+                 _ = _role.Equals("Food") ? MainTab.Items.Add(new TabItem { Content = new ucCheckFood() }) : MainTab.Items.Add(new TabItem { Content = new ucCleanChamber() });
+            }
+        }
+
+        private void CheckRole()
+        {
+            if (!_role.Equals("Admin"))
+            {
+                Menu control = menu as Menu;
+                foreach (MenuItem item in control.Items)
+                {
+                    item.IsEnabled = false;
+                }
+
+                if (_role.Equals("Food"))
+                {
+                    MenuItem item = CheckFoodButton as MenuItem;
+                    item.IsEnabled = true;
+                }
+
+                if (_role.Equals("Clean"))
+                {
+                    MenuItem item = CheckCleanChamber as MenuItem;
+                    item.IsEnabled = true;
+                }
+            }
+        }
+
         private void OnHomeButtonClick(object sender, RoutedEventArgs e)
         {
             NavigateToHomeWindow();

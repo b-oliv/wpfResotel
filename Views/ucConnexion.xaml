@@ -56,8 +56,8 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel VerticalAlignment="Center" Margin="10,58,6,58">
-                <TextBox materialDesign:HintAssist.Hint="Nom d'utilisateur" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15" Margin="0,10"/>
-                <PasswordBox materialDesign:HintAssist.Hint="Mot de passe" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontSize="15"  Margin="0,10"/>
+                <TextBox Name="userText" materialDesign:HintAssist.Hint="Nom d'utilisateur" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15" Margin="0,10"/>
+                <PasswordBox Name="passText" materialDesign:HintAssist.Hint="Mot de passe" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontSize="15"  Margin="0,10"/>
             </StackPanel>
         </Grid>
         <Button Click="btnLogin_Click" x:Name="btnLogin" VerticalAlignment="Bottom" Foreground="White" Margin="162,0,140,52" Content="Connexion" Grid.Column="1" Grid.Row="3" Height="38"/>

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ProjetRESOTEL.Views"
+             xmlns:local="clr-namespace:ProjetRESOTEL.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -14,8 +14,20 @@
             <RowDefinition Height="31*"/>
         </Grid.RowDefinitions>
 
-        <Rectangle Grid.Row="1" Grid.Column="0" Fill="#333535" />
+        <ListBox Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Stretch"
+                 ItemsSource="{Binding Bedrooms}" Background="#ADADAD" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="BriefcaseAccountOutline" />
+                        
+                        <TextBlock Text="{Binding RoomNumber}" Margin="15 0 0 0" />
 
-        <TextBlock Grid.Row="1" Grid.Column="2"  Foreground="White" Text="Functionality CleanRoom - Not implemented yet" FontSize="14" TextAlignment="Center" VerticalAlignment="Center" Margin="5 0 0 0"/>
+                        <TextBlock Text="{Binding DateClean}" Margin="10 0 0 0" />
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </UserControl>

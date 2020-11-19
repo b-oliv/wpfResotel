@@ -31,6 +31,26 @@ namespace ProjetRESOTEL.ViewModels
             this.bedroom = bedroom;
         }
 
+        public int RoomNumber
+        {
+            get { return bedroom.RoomNumber; }
+            set
+            {
+                bedroom.RoomNumber = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public DateTime DateClean
+        {
+            get { return bedroom.DateClean; }
+            set
+            {
+                bedroom.DateClean = value;
+                NotifyPropertyChanged();
+            }
+        }
+
 
     }
 }
